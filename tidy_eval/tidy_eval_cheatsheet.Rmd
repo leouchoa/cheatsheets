@@ -1,0 +1,115 @@
+---
+title: "Tidy eval Cheatsheet"
+author: "Leonardo Uchôa Pedreira"
+date: "1/13/2022"
+output:
+  pdf_document: default
+urlcolor: blue
+linkcolor: red
+# header-includes:
+#    - \usepackage{listings}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,warning = FALSE)
+```
+
+```{r libs,echo=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+# General Recipe
+
+Looking not deep, it's kinda simple to create new functions in the tidyverse way. The strategy to make it work is just to [`quote` (make it become a symbol) and `unquote` (evaluate the symbol)](https://tidyeval.tidyverse.org/sec-up-to-speed.html#quote-and-unquote) the function arguments. Let's look an example.
+
+The next function call won't work.
+
+```{r, eval=FALSE}
+grouped_mean <- function(data, group_var, summary_var) {
+    data %>%
+    group_by(group_var) %>%
+    summarise(mean = mean(summary_var))
+}
+
+grouped_mean(mtcars, cyl, mpg)
+
+# Error: Must group by variables found in `.data`.
+# * Column `group_var` is not found.
+# Run `rlang::last_error()` to see where the error occurred.
+
+```
+
+To make it work we need to use the `quote` and `unquote` strategy. So first we quote the arguments with `enquo` and then unquote them with `!!`.
+
+```{r, eval=TRUE}
+grouped_mean <- function(data, group_var, summary_var) {
+  group_var <- enquo(group_var)
+  summary_var <- enquo(summary_var)
+
+  data %>%
+    group_by(!!group_var) %>%
+    summarise(mean = mean(!!summary_var))
+}
+
+grouped_mean(mtcars, cyl, mpg)
+```
+
+\pagebreak
+
+### Some Extras
+
+There some key functions when talking about tidy eval. They are:
+
+- `quote`: used outside functions to make objects become symbols
+- `enquo`: used inside functions to make objects become symbols. (There's also `enquos`).
+- `sym`: used inside and outside functions to make strings become symbols. There's also `syms`, used for vectors, like `syms(c('cyl','disp'))`. Example:
+  - this works `syms(c('cyl','disp'))`
+  - this doesn't `sym(c('cyl','disp'))`
+- `!!`: used to unquote symbols
+- `!!!`: used to unquote vectorized symbols. For example:
+  - this works `group_by(mtcars,!!!syms(c('cyl','disp')))`
+  - this doesn't `group_by(mtcars,!!syms(c('cyl','disp')))`
+
+
+### Using with `ggplot2`
+
+If we're creating a plotting function like `plt <- function(df,col)`, we have two approaches. The first is to make `col` be a string and the second is to make it behave like an object, the dplyr style. 
+
+\begin{center}
+\textbf{First}: \textit{col} is called as a string
+\end{center}
+
+```{r, eval=FALSE}
+col_summary <- function(df, col) {
+  ggplot(df) + 
+    geom_bar(aes(x = .data[[col]])) + 
+    coord_flip()
+}
+
+col_summary(mpg, "drv")
+```
+
+
+\begin{center}
+\textbf{Second}: \textit{col} is called like an object
+\end{center}
+
+```{r, eval=FALSE}
+col_summary <- function(df, col) {
+  ggplot(df) + 
+    geom_bar(aes(x = {{ col }})) + 
+    coord_flip()
+}
+
+col_summary(mpg, drv)
+```
+
+\pagebreak
+
+
+# Sources
+
+- [tidy eval book](https://tidyeval.tidyverse.org/sec-up-to-speed.html#writing-functions)
+- [programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html)
+- [ggplot2 functions](https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html)
+- [rlang cheatsheet](https://psych252.github.io/psych252book/figures/cheatsheets/tidyeval.pdf)
