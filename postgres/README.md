@@ -20,3 +20,22 @@ $ psql -Atx "host=localhost port=5432 dbname=user_name user=user_name" -c 'selec
 
 [reference](https://tapoueh.org/blog/2019/09/postgres-connection-strings-and-psql/)
 
+
+# Integration with Neovim
+
+Plugins used are: 
+
+- [vim-dadbod](https://github.com/tpope/vim-dadbod)
+- [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
+- [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
+
+
+## Using just vim-dadbod
+
+Besides using the connection string you can simply to this instead: 
+
+```
+:DB postgresql database_name < query_file.sql
+```
+
+
