@@ -3,6 +3,10 @@
 - list databases: `\l`
 - describe a table `\d tablename`
 - switch to the database that you want to work with: `\c database`
+
+
+## Connection Strings
+
 Connecting to localhost:
 
 ```
@@ -12,4 +16,7 @@ $ psql -Atx postgresql://user_name@localhost:5432/user_name -c 'select current_d
 
 $ psql -Atx "host=localhost port=5432 dbname=user_name user=user_name" -c 'select current_date' 
 ```
+
+
+[reference](https://tapoueh.org/blog/2019/09/postgres-connection-strings-and-psql/)
 
