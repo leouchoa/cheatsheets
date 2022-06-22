@@ -75,6 +75,17 @@ You can achieve to this by using `vi(` or `vi)`.
   - Example: consider the word `texttt`. We can use `cft` to delete all letter ou to the first match of the letter `t` which means that the resulting text of the deletion will be `tt`.
   - Another example: `cf1` --> `text1text2` = `text2`
 
+
+# Folding
+
+First you need to set the Folding method. I usually set to `indent`. Then you can use those [Fold commands](https://neovim.io/doc/user/fold.html):
+
+- To navigate between folds, you can use `zj` and `zk`
+- to open a fold you can use `za` or `zo` with respective uppe cases
+- to close a fold you can use `zc`
+- there's a cool thing you can with zm and zr which opens/closes by level recursively
+
+
 # The dot operator
 
 It repeats the last action performed. Here's a [link](https://sodocumentation.net/vim/topic/3665/the-dot-operator) to good example 
