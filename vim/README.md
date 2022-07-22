@@ -95,3 +95,11 @@ It repeats the last action performed. Here's a [link](https://sodocumentation.ne
 You can diff and merge files inside vim. Also you can [diff buffers](http://vimcasts.org/episodes/comparing-buffers-with-vimdiff/).
 
 IMPROVE this
+
+# Visual Block Editing
+
+You can use `control-v` to enter visual block mode. Then you can delete, cut, yank, insert upper/lower case, etc... But the coolest thing is to insert text, which you achieve with `shift-i`:
+
+1. Enter visual block mode and select text.
+2. Press `shift-i` and write the text you want to be added.
+3. Press escape `esc` and the changes should take effect.
