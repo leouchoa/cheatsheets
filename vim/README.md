@@ -94,7 +94,23 @@ It repeats the last action performed. Here's a [link](https://sodocumentation.ne
 
 You can diff and merge files inside vim. Also you can [diff buffers](http://vimcasts.org/episodes/comparing-buffers-with-vimdiff/).
 
-IMPROVE this
+## Opening diffmode
+
+Suppose you have two files, named `f1` and `f2`. Then to enter diffmode you can use:
+
+1. `nvim -d f1 f2` or `nvim -d *` if there's only f1 and f2 there
+2. `windo diffthis` if you have both `f1` and `f2` open already.
+
+## diffmode commands
+
+Inside `diffmode` you can use: 
+
+- `:diffput` ( or `dp` as a shortcut) to put the put the difference in the other buffer 
+- `:diffget` ( or `do` as a shortcut) to get the put the difference from the other buffer 
+- `:diffupdate`, `:diffu`: recalculate the diff
+- `:diffg RE`: get from REMOTE
+- `:diffg BA`: get from BASE
+- `:diffg LO`: get from LOCAL
 
 # Visual Block Editing
 
