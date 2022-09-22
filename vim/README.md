@@ -21,6 +21,7 @@ My cheatsheet for navigating inside vim
 
 - Delete all lines containing a certain word: `:g/word/d`
 - Delete all blank lines: `g/^$/d`
+
 ## Delete text within scope
 
 Consider this code: 
@@ -74,6 +75,8 @@ You can achieve to this by using `vi(` or `vi)`.
 - Cut text to a specified letter: `cfLETTER`
   - Example: consider the word `texttt`. We can use `cft` to delete all letter ou to the first match of the letter `t` which means that the resulting text of the deletion will be `tt`.
   - Another example: `cf1` --> `text1text2` = `text2`
+- capital p (`P`) lets you paste above the line
+- in insert mode, pressing `o` lets you jump between beginning/end of selected text
 
 
 # Folding
