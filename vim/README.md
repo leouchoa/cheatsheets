@@ -133,3 +133,10 @@ You can use `control-v` to enter visual block mode. Then you can delete, cut, ya
 1. Enter visual block mode and select text.
 2. Press `shift-i` and write the text you want to be added.
 3. Press escape `esc` and the changes should take effect.
+
+
+# Regex
+
+To use regex in vim, just remember to prepend `\` before any special characters, like `\w` for words or `\(\)` for grouping.
+
+- **Tip**: don't forget you can access the grouping variable! This can be achieved with `\NumberOfMatch`. So for example to change the word between numbers you in this ---> `12345heheheh12345` <--- you can use: `s/\([a-z]\+\)/\1_hahahah/` and it will become `12345"heheheh_hahahah"12345`
