@@ -56,6 +56,17 @@ You can achieve to this by using `vi(` or `vi)`.
   
 # Using `g`
 
+- **[GODLIKE INCREMENT TRICK](https://www.youtube.com/watch?v=uL9oOZStezw)**: Suppose you have something like this: 
+
+```
+data_struct[0] = "foo";
+data_struct[0] = "barr";
+data_struct[0] = "buzzz";
+data_struct[0] = "heheeheh";
+```
+
+If you v-block select those lines and press `g` + `CTRL` + `A`, then you'll get a auto-increment in the first incrementable item. (ofc you can just v-line the text and use it)
+
 - Going back to where you writing text: `gi`
 - Going back to your last visual mode selection: `gv`
 - Deleting lines containing certain word: `:g/word/d`
