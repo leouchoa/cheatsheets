@@ -1,0 +1,10 @@
+name: pyspark_test
+channels:
+        - conda-forge
+        - defaults
+dependencies:
+        - pyspark=3.2.0
+        - jupyterlab=3.2.1
+        - notebook=6.4.5
+
+
