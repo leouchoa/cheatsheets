@@ -29,6 +29,15 @@ Github actions allows you to run a shell other than `bash`, like `zsh` or even `
 
 To give access permission you just have to use the `${{ secrets.GITHUB_TOKEN }}` token. [Here](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#example-2-calling-the-rest-api) is a nice example of creating an issue by making an API request.
 
+# Specifying Secrets Bigger than `64`kbs
+
+Github secrets [cannot be bigger than `64`kbs](https://docs.github.com/en/actions/security-guides/encrypted-secrets). But if there's no way around that, what you can do is to:
+
+1. add the config to a file
+2. encrypt it with gpg
+3. save the decryption password as a github secret
+4. add a step in your workflow to decrypt the file by running something like `gpg --quit --batch --yes --decrypt --passphrase="$GPG_PASSPHRASE" encrypted_file.gpg` (don't forget to access the secret with `${{ secrets.GPG_PASSPHRASE }})
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
