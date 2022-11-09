@@ -63,6 +63,22 @@ jobs:
         run: echo "second"
 ```
 
+## Run a Step Even if the Previous Fails
+
+You can achieve this by adding an `if: failure()` check. For example
+
+```
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first
+        run: eccccccccccccccho "first"
+      - name: second
+        if: failure() <-------- here
+        run: echo "second"
+```
+
 ## Using Pre-Built Action
 
 By using the `uses` keyword you can specify a Pre-Built Action, like bellow. Note in the `identifier` part that you can **optionally** use:
