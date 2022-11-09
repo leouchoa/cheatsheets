@@ -38,6 +38,10 @@ Github secrets [cannot be bigger than `64`kbs](https://docs.github.com/en/action
 3. save the decryption password as a github secret
 4. add a step in your workflow to decrypt the file by running something like `gpg --quit --batch --yes --decrypt --passphrase="$GPG_PASSPHRASE" encrypted_file.gpg` (don't forget to access the secret with `${{ secrets.GPG_PASSPHRASE }})
 
+# Contexts
+
+Remember the `${{ asd.VARIABLE }}` syntax? Well the `asd` thing inside of it is called a [`context`](https://docs.github.com/en/actions/learn-github-actions/contexts). There are also some special [functions that can be used in conjunction with function](https://docs.github.com/en/actions/learn-github-actions/expressions#functions)
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
