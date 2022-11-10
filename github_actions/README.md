@@ -79,6 +79,25 @@ jobs:
         run: echo "second"
 ```
 
+will make the second step run even if the first fails.
+
+One problem with using `failure()` is that only the specified step with run, but not every step after the one that failed. To make every step after the failed run, you can use the `continue-on-error` flag:
+
+
+```
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first
+        run: eccccccccccccccho "first"
+        continue-on-error: true
+      - name: second
+        run: echo "second"
+      - name: third
+        run: echo "third"
+```
+
 ## Using Pre-Built Action
 
 By using the `uses` keyword you can specify a Pre-Built Action, like bellow. Note in the `identifier` part that you can **optionally** use:
@@ -147,6 +166,7 @@ on:
 !!IMPORTANT!!: you can only have schedules that run at least every 5 minutes! That means you can't have a workflow that runs every 1, 2, 3 or 4 minutes.
 
 !!**Tip**!! [here's](https://crontab.guru) a nice site to help you create your cronjobs!
+
 ## Filtering Branches
 
 You can make your actions run only in certain branches. There are many ways to specify branches, which are described [here](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet), like using the single `*` or double `**` wildcards.
