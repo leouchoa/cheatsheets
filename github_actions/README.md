@@ -171,6 +171,22 @@ on:
 
 You can make your actions run only in certain branches. There are many ways to specify branches, which are described [here](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet), like using the single `*` or double `**` wildcards.
 
+
+## Setting up Timeout Minutes
+
+If you want your jobs to stop running if it takes too long you can use the `timeout-minutes` entry:
+
+```
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # stops if it takes 1 hour
+    steps:
+      - name: first
+        run: echo "first"
+        continue-on-error: true
+```
+
 ### Examples
 
 - `feature/feat[AB]`: matches `featA` and `featB`
