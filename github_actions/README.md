@@ -133,6 +133,35 @@ jobs:
 
 Also it is important to remember that in this case the `'hello hi'` args will be available as `['hello', 'hi']` to docker's `CMD` command.
 
+
+### Multiple Arguments
+
+```
+jobs:
+  docker-example:
+    container: 
+      image: bullseye-latest
+    steps:
+      name: Docker Step
+      uses: docker://alpine-latest # notice: this means this step will use it's own container
+      with:
+        entrypoint: ./script.sh <---- here
+        args: 'hello hi' <---- here
+```
+
+
+where `script.sh` is, for example:
+
+```
+\#!/bin/bash
+echo $1 $2
+```
+
+will print `'hello hi'`.
+
+**Don't forge to add permission to your script with: `chmod +x script.sh` **
+
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
