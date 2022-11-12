@@ -42,6 +42,27 @@ Github secrets [cannot be bigger than `64`kbs](https://docs.github.com/en/action
 
 Remember the `${{ asd.VARIABLE }}` syntax? Well the `asd` thing inside of it is called a [`context`](https://docs.github.com/en/actions/learn-github-actions/contexts). There are also some special [functions that can be used in conjunction with function](https://docs.github.com/en/actions/learn-github-actions/expressions#functions)
 
+# Matrix Strategy
+
+Add the following to your `yml`:
+
+```
+...
+
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-latest]
+        version: [10, 12, 14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+```
+
+which will add a matrix of options into your contexts, meaning that `${{ matrix.version }}` and `${{ matrix.os }}` can be used. [Here's a good example of usage](https://github.com/alialaa/github-actions-course/blob/master/.github/workflows/matrix.yml) which also has an example for how to use the `include` and `exclude` functions.
 # Common Scenarios
 
 ## Make a Step Depend on Another
