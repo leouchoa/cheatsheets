@@ -104,6 +104,35 @@ jobs:
       run: |
         lsb -a
 ```
+
+## Specifying `Entrypoints` and `Args`
+
+In the docker there are the `ENTRYPOINTS` and `CMD` commands. In github-actions the related yaml entries are, respectively, `entrypoint` and `args`.
+
+So for example if we have in a `Dockerfile`:
+
+```
+ENTRYPOINT ['/bin/echo', 'hello']
+CMD 'hi'
+```
+
+the respective in a github-actions yaml will be something like:
+
+```
+jobs:
+  docker-example:
+    container: 
+      image: bullseye-latest
+    steps:
+      name: Docker Step
+      uses: docker://alpine-latest # notice: this means this step will use it's own container
+      with:
+        entrypoint: '/bin/echo' <---- here
+        args: 'hello hi' <---- here
+```
+
+Also it is important to remember that in this case the `'hello hi'` args will be available as `['hello', 'hi']` to docker's `CMD` command.
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
@@ -207,7 +236,6 @@ jobs:
 ```
 
 Reference: [stackoverflow: GitHub Clone with OAuth Access Token](https://stackoverflow.com/a/66156992)
-
 
 
 ## Setting up Cronjobs
