@@ -92,7 +92,7 @@ For a more complete example, check out [this example](https://docs.github.com/en
 
 You can have a step use a separate container:
 
-```
+
 ```
 jobs:
   docker-example:
@@ -153,7 +153,7 @@ jobs:
 where `script.sh` is, for example:
 
 ```
-\#!/bin/bash
+#!/bin/bash
 echo $1 $2
 ```
 
