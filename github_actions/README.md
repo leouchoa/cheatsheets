@@ -87,6 +87,23 @@ jobs:
 
 For a more complete example, check out [this example](https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers#running-jobs-in-containers)
 
+
+## Making a Step Have it's Own Container
+
+You can have a step use a separate container:
+
+```
+```
+jobs:
+  docker-example:
+    container: 
+      image: alpine-latest
+    steps:
+      name: Docker Step
+      uses: docker://bullseye-latest # notice: this means this step will use it's own container
+      run: |
+        lsb -a
+```
 # Common Scenarios
 
 ## Make a Step Depend on Another
