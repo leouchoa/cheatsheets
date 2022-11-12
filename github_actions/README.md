@@ -63,6 +63,30 @@ jobs:
 ```
 
 which will add a matrix of options into your contexts, meaning that `${{ matrix.version }}` and `${{ matrix.os }}` can be used. [Here's a good example of usage](https://github.com/alialaa/github-actions-course/blob/master/.github/workflows/matrix.yml) which also has an example for how to use the `include` and `exclude` functions.
+
+# Using Docker Containers
+
+Here's a dumb example of how to spin up a postgres container on a ubuntu host with github-actions.
+
+```
+name: containers
+on: push
+
+
+jobs:
+  docker-example:
+    runs-on: ubuntu-latest
+    container:
+      image: postgres
+      env: 
+        POSTGRES_PASSWORD: "${{ secrets.YOUR_PSQL_PASS }}"
+      # options:
+      # volume:
+      # ports:
+```
+
+For a more complete example, check out [this example](https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers#running-jobs-in-containers)
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
