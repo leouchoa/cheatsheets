@@ -145,10 +145,8 @@ jobs:
 ```
 
 Reference: [stackoverflow: GitHub Clone with OAuth Access Token](https://stackoverflow.com/a/66156992)
-# References
 
-- [list of gha default env variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables)
-- [stackoverflow: GitHub Clone with OAuth Access Token](https://stackoverflow.com/a/66156992)
+
 
 ## Setting up Cronjobs
 
@@ -193,3 +191,10 @@ jobs:
 - `feature/feat[AB]+`: matches `featAB`
 - `feature/feat[A-E]`: matches `featA`, `featB`, ..., `featE`
 - `!README.md`: matches any branch that doesn't have a `README.md` file
+
+
+# References
+
+- [list of gha default env variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables)
+- [stackoverflow: GitHub Clone with OAuth Access Token](https://stackoverflow.com/a/66156992)
+
