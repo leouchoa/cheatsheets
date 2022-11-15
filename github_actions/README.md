@@ -271,6 +271,10 @@ Reference: [stackoverflow: GitHub Clone with OAuth Access Token](https://stackov
 
 You can cache folders by using the [cache action](https://github.com/actions/cache)
 
+## Uploading Artifacts
+
+You can upload artifacts by using the [upload-artifact](https://github.com/actions/upload-artifact) action. This way the artifact will be available for download for a [period of 90 days](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration#artifact-and-log-retention-policy).
+
 ## Setting up Cronjobs
 
 You can easily setup (multiple!) cronjobs with the following:
