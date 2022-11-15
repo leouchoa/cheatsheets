@@ -162,6 +162,21 @@ will print `'hello hi'`.
 **Don't forge to add permission to your script with: `chmod +x script.sh` **
 
 
+
+# Adding a Workflow Status Badge
+
+You can add a github badge to display the status of the current commit workflow run (passing/failing). The [syntax](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge) is this:
+
+```
+![](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
+```
+
+You can also filter branches and events you some query params in the URL, for example:
+
+```
+![](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg?branch=<BRANCH_NAME>&event=<EVENT_NAME>)
+```
+
 # Common Scenarios
 
 ## Make a Step Depend on Another
