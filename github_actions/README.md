@@ -267,6 +267,10 @@ jobs:
 Reference: [stackoverflow: GitHub Clone with OAuth Access Token](https://stackoverflow.com/a/66156992)
 
 
+## Caching Folders
+
+You can cache folders by using the [cache action](https://github.com/actions/cache)
+
 ## Setting up Cronjobs
 
 You can easily setup (multiple!) cronjobs with the following:
