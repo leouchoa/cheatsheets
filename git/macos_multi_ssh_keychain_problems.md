@@ -31,6 +31,8 @@ git clone git@github.com:Samplemed/personal_repo.git
 
 ## Troubleshooting
 
+- !!! Take care for inconsistencies between repos credentials, when cloning !!!
+
 **Important**: you probably should run
 
 ```
