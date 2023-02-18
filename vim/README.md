@@ -79,6 +79,7 @@ If you v-block select those lines and press `g` + `CTRL` + `A`, then you'll get 
   
 # Misc
   
+- open netrw: `:Ex`
 - asterisk `*` is a quicker find that auto-identifies the word and searches for it!
 - `~` switch cases.
 - Reopen last edited file with `c-o` (control-o)
