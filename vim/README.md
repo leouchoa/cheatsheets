@@ -79,6 +79,7 @@ If you v-block select those lines and press `g` + `CTRL` + `A`, then you'll get 
   
 # Misc
   
+- **lua**: sourcing the current file `:so` (ofc you set a target file)
 - open netrw: `:Ex`
 - asterisk `*` is a quicker find that auto-identifies the word and searches for it!
 - `~` switch cases.
