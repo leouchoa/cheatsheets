@@ -34,4 +34,3 @@ You also can use group roles to make it easier to admin groups. Example:
 - Alter roles: [link](https://www.postgresqltutorial.com/postgresql-administration/postgresql-alter-role/)
 - [Reset forgotten password](https://www.postgresqltutorial.com/postgresql-administration/postgresql-reset-password/)
 - [Reset an user's password](https://www.postgresqltutorial.com/postgresql-administration/postgresql-change-password/)
-- [Create a copy of a database:](http://stackoverflow.com/questions/876522/ddg#876565) `CREATE DATABASE newdb WITH TEMPLATE originaldb OWNER dbuser;`

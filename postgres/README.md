@@ -4,6 +4,7 @@
 - list users: `\du` or `\du+`
 - describe a table `\d tablename`
 - switch to the database that you want to work with: `\c database`
+- List all postgres tables in one particular schema: `\dt schemaname.*`
 
 ## Connection Strings
 
