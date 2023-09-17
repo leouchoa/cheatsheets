@@ -26,6 +26,8 @@ You also can use group roles to make it easier to admin groups. Example:
 
 ## Useful Commands
 
+- list access privileges: `\dpp+`
+- list default access privileges: `\ddp+`
 - Create role: `CREATE ROLE role_name;` or `CREATE ROLE role_name WITH option;`
 - Create role that can create dbs: `CREATE ROLE dba CREATEDB LOGIN PASSWORD 'Abcd1234';`
 - Create role with validity period: `CREATE ROLE dev_api WITH LOGIN PASSWORD 'securePass1' VALID UNTIL '2030-01-01';`
