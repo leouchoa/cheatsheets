@@ -10,6 +10,10 @@
 ## Connection Strings
 
 Connecting to localhost:
+To connect to postgres the most basic Way is with the `psql` command:
+`psql -U user_name -W postgres`. Note that the `postgres` is the default
+database name, otherwise it will assume that the user_name is the db name.
+However you can also login with connection strings:
 
 ```bash
 psql -Atx -U user_name -d user_name -h localhost -p 5432 -c 'select current_date'
