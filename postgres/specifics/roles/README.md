@@ -26,6 +26,8 @@ You also can use group roles to make it easier to admin groups. Example:
 
 ## Useful Commands
 
+### General Commands
+
 - list access privileges: `\dpp+`
 - list default access privileges: `\ddp+`
 - Create role: `CREATE ROLE role_name;` or `CREATE ROLE role_name WITH option;`
@@ -36,3 +38,11 @@ You also can use group roles to make it easier to admin groups. Example:
 - Alter roles: [link](https://www.postgresqltutorial.com/postgresql-administration/postgresql-alter-role/)
 - [Reset forgotten password](https://www.postgresqltutorial.com/postgresql-administration/postgresql-reset-password/)
 - [Reset an user's password](https://www.postgresqltutorial.com/postgresql-administration/postgresql-change-password/)
+
+### List All Privileges of an User
+
+```sql
+SELECT table_catalog, table_schema, table_name, privilege_type
+FROM   information_schema.table_privileges 
+WHERE  grantee = 'MY_USER'
+```
