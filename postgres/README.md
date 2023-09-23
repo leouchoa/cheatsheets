@@ -2,10 +2,14 @@
 
 - list databases: `\l`
 - list users: `\du` or `\du+`
+- list all schemas: `\dn`
+- list all views: `\dv`
+- list all stored procedures and fns: `\df`
 - describe a table `\d tablename`
 - switch to the database that you want to work with: `\c database`
 - List all postgres tables in one particular schema: `\dt schemaname.*`
 - Connection information: (current user, port, dtb) `\conninfo`)
+- [good cheatsheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
 ## Connection Strings
 
@@ -41,6 +45,10 @@ Besides using the connection string you can simply to this instead:
 :DB postgresql database_name < query_file.sql
 ```
 
+Or you can use the `\e` command from inside psql to open you editor and after
+you type the command in the editor, save it, and close the editor, psql will
+execute the command and return the result.
+
 ## CTEs vs Temporary Tables vs Subqueries
 
 [CTEs](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-cte/) is:
@@ -51,3 +59,14 @@ Usually CTES are used to improve readability in the context of long/complex join
 
 - Which to use depends on code, just aim for readability;
 - It may often happen that their costs are nearly the same, as shown in [this post](https://www.startdataengineering.com/post/using-common-table-expression-in-redshift/)
+
+## Query Timing
+
+```sql
+database=\timing
+database=select count(*) from film;
+
+--> results here <--
+
+database=\timing
+```
