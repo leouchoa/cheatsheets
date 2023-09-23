@@ -11,10 +11,7 @@ PASSWORD 'securePass1';
 Then to login: `psql -U alice -W postgres`. But you can't do anything yet, first you gotta grant privileges:
 
 ```sql
-GRANT ALL
-ON ALL TABLES
-IN SCHEMA "public"
-TO leo;
+GRANT ALL ON ALL TABLES IN SCHEMA "public" TO leo;
 ```
 
 You also can use group roles to make it easier to admin groups. Example:
@@ -28,6 +25,7 @@ You also can use group roles to make it easier to admin groups. Example:
 
 ### General Commands
 
+- connect to same db with different user: `\c - a_new_user` (`-` sign means same db)
 - list access privileges: `\dpp+`
 - list default access privileges: `\ddp+`
 - Create role: `CREATE ROLE role_name;` or `CREATE ROLE role_name WITH option;`
