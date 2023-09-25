@@ -57,3 +57,17 @@ aws lambda create-function \
     --handler my-function.handler \
     --role arn:aws:iam::xxxxx:role/service-role/< function name>-role-tges6bf4
 ```
+
+## Create an S3 bucket
+
+```bash
+aws s3api create-bucket  \
+-- bucket < name of the bucket goes here> \
+-- region < name of the region goes here>
+```
+
+## Upload files to S3
+
+```bash
+aws s3 sync < source> < target>
+```
