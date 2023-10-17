@@ -1,8 +1,17 @@
 # AWS cli
 
-Many of those commands were taken from the udacity [cloud devops engineer course](https://learn.udacity.com/nanodegrees/nd9991)
+## Configs
+
+More info about how to configure aws cli profiles [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-where).
+
+- list profiles: `aws configure list-profiles`
+- list profile config: `aws configure list --profile <PROFILE_NAME>`
+
+If you wanna set a profile as default, use the `AWS_DEFAULT_PROFILE` env var. Example: `export AWS_DEFAULT_PROFILE=account1`
 
 ## Command-Line statements for Launching and EC2 Instance
+
+Many of those commands were taken from the udacity [cloud devops engineer course](https://learn.udacity.com/nanodegrees/nd9991)
 
 Step 1: Create Key-Pair
 
@@ -70,4 +79,14 @@ aws s3api create-bucket  \
 
 ```bash
 aws s3 sync < source> < target>
+```
+
+## DynamoDB table creation
+
+```bash
+aws dynamodb create-table  \
+-- table-name < table name goes here> \
+-- attribute-definitions AttributeName=< name goes here>,AttributeType=S  \
+-- key-schema AttributeName=< name goes here>,KeyType=HASH \
+-- provisioned-throughput ReadCapacityUnits=< value goes here>,WriteCapacityUnits= < value goes here> \
 ```
