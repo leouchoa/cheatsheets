@@ -2,6 +2,10 @@
 
 ## Simple Tips
 
+- Stop all containers: `docker stop $(docker ps -a -q)`
+- Delete all containers, include their volumes: `docker rm -vf $(docker ps -a -q)`
+- Delete all images: `docker rmi -f $(docker images -a -q)` (**TAKE CARE**)
+- Delete all `EXITED` images: `docker rm $(docker ps -q -f status=exited)`
 - Use `docker system df` to see space usage.
 - The new `docker sbom` CLI command displays the SBOM (Software Bill Of Materials) of any Docker image. This feature outputs the SBOM in a table or can be exported into SPDX and CycloneDX formats.
 
