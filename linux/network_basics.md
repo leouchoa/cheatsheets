@@ -11,3 +11,15 @@ It will display the Kernel routing table.
 - Add a route: `ip route add <TARGET_NETWORK> via <ROUTING_HOST>`
 - Check if ip forwarding is enabled on the host: modify the
 `/proc/sys/net/ipv4/ip_forward` to have the entry `1` instead of `0`.
+
+## How To Give a Host a Name
+
+Modify the `/etc/hosts` to have the IP address and it's name. Example:
+
+```bash
+cat /etc/hosts
+# result: 192.168.1.11 cool_website
+# result: 192.168.1.12 cool_website_db
+# result: 192.168.1.13 cool_website_ml_model
+```
+
