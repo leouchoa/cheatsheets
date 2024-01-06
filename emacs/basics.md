@@ -1,5 +1,9 @@
 # Basic Commands
 
+## Text Editing
+
+- Select text: `C - SPACE`
+
 ## File Management
 
 - Load file: `C-x C-f`
@@ -16,5 +20,4 @@
 
 ## Tips
 
-- You can access emacs' logs with the log buffer by pressing: 
 - You don't need to press `control` twice in commands like `C-x C-s`
