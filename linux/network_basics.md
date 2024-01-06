@@ -23,3 +23,12 @@ cat /etc/hosts
 # result: 192.168.1.13 cool_website_ml_model
 ```
 
+## How To Point a Machine To a DNS Server
+
+In each machine, go to the `/etc/resolv.conf` and add the
+DNS server hostname, along with it's IP address. Example:
+
+```bash
+cat /etc/resolv.conf
+# result: nameserver 192.168.1.100
+```
