@@ -18,9 +18,9 @@ Modify the `/etc/hosts` to have the IP address and it's name. Example:
 
 ```bash
 cat /etc/hosts
-# result: 192.168.1.11 cool_website
-# result: 192.168.1.12 cool_website_db
-# result: 192.168.1.13 cool_website_ml_model
+# 192.168.1.11 cool_website
+# 192.168.1.12 cool_website_db
+# 192.168.1.13 cool_website_ml_model
 ```
 
 ## How To Point a Machine To a DNS Server
@@ -30,5 +30,27 @@ DNS server hostname, along with it's IP address. Example:
 
 ```bash
 cat /etc/resolv.conf
-# result: nameserver 192.168.1.100
+# nameserver 192.168.1.100
+```
+
+## Resolving Subdomains
+
+Suppose you're at your company and want to ping the site
+`web.mycompany.com`. But instead of writing `ping web.mycompany.com`
+everytime you to simply use `ping web`. In that case go to
+`etc/resolv.conf` and add `search mycompany.com`.
+
+```bash
+cat /etc/resolv.conf
+# nameserver 192.168.1.100
+# search mycompany.com
+```
+
+This works because the host excludes the domain and works
+only with the subdomain. You can even put additional search domains:
+
+```bash
+cat /etc/resolv.conf
+# nameserver 192.168.1.100
+# search mycompany.com prod.mycompany.com
 ```
