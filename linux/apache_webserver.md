@@ -8,8 +8,8 @@ at a different place.
 ### VirtualHost
 
 It's a logical division of the apache web server. Each can be configured with
-it's own server name and doc root. You can configure it in the `httpd.conf` file.
-The example bellow shows one that sets a domain name and the [DocumentRoot](https://support.reclaimhosting.com/hc/en-us/articles/4416677995799-Understanding-Document-Roots).
+it's own server name and doc root. You can configure it in the `/etc/httpd/conf/httpd.conf`
+file. The example bellow shows one that sets a domain name and the [DocumentRoot](https://support.reclaimhosting.com/hc/en-us/articles/4416677995799-Understanding-Document-Roots).
 
 ```bash
 <VirtualHost *:80>
@@ -21,7 +21,7 @@ The example bellow shows one that sets a domain name and the [DocumentRoot](http
 ### Hosting Many Websites
 
 A single apache server can host multiple websites. You can do this by defining
-multiple virtual hosts in the apache config file. Example in `httpd.confg`:
+multiple virtual hosts in the apache config file. Example in `/etc/httpd/conf/httpd.confg`:
 
 ```bash
 <VirtualHost *:80>
