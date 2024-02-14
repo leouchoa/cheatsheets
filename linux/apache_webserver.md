@@ -86,8 +86,10 @@ Include conf/oranges.conf
 
 ```bash
 yum install httpd
-service httpd start
-service httpd status
+sudo systemctl start httpd
+sudo systemctl enable httpd
+# service httpd start
+# service httpd status
 ```
 
 ## How to View the logs
