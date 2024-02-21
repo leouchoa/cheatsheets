@@ -1,8 +1,13 @@
 # Sobre VMs dentro do Docker
 
-Maioria dos containers dos containers rodam em um kernel Linux, o que significa que quando você instala o desktop Docker ou algumas das formas alternativas de rodar containers, estas ferramentas normalmente gerenciarão uma VM local rodando um pequeno kernel Linux e um pequeno sistema de arquivos de containers.
+Maioria dos containers dos containers rodam em um kernel Linux, o que significa
+que quando você instala o desktop Docker ou algumas das formas alternativas de
+rodar containers, estas ferramentas normalmente gerenciarão uma VM local rodando
+um pequeno kernel Linux e um pequeno sistema de arquivos de containers.
 
-Portanto, uma das grandes coisas que o Docker Desktop fará por você é gerenciar a configuração, a atualização da segurança e, em seguida, a exclusão daquela pequena VM, tudo isso para você de forma transparente em segundo plano.
+Portanto, uma das grandes coisas que o Docker Desktop fará por você é gerenciar
+a configuração, a atualização da segurança e, em seguida, a exclusão
+daquela pequena VM, tudo isso para você de forma transparente em segundo plano.
 
 ## Images and Layers
 
@@ -20,7 +25,7 @@ Portanto, uma das grandes coisas que o Docker Desktop fará por você é gerenci
 
 If you look into the `drupal` image in dockerhub (as of 28/10/2022) you'll see this:
 
-```
+```yaml
 services:
 
   drupal:
@@ -33,9 +38,10 @@ services:
       - /var/www/html/themes
 ```
 
-Those are anonymous volumes, which means they're not named. Remember that we can name volumes by doing this:
+Those are anonymous volumes, which means they're not named. Remember that we can
+name volumes by doing this:
 
-```bash
+```yaml
 services:
 
   drupal:
@@ -48,13 +54,20 @@ services:
       - themes:/var/www/html/themes
 ```
 
-One cool feature of docker is that a new anonymous volume will be initialized with the existing content of the image at the same location, and so there's no need in this case to name volumes.
+One cool feature of docker is that a new anonymous volume will be initialized
+with the existing content of the image at the same location, and so there's no
+need in this case to name volumes.
 
 ## Bind Mount
 
-This is what makes local development inside containers possible. Binding mounts is just mapping a host file/dir to a container file/dir, which synchronizes them (but the if the container is deleted, the host file is preserved).
+This is what makes local development inside containers possible.
+Binding mounts is just mapping a host file/dir to a container file/dir,
+which synchronizes them (but the if the container is deleted, the host file is preserved).
 
-There's just one catch here: is that you have to either use docker-compose or run it with `docker container run ....`, you **can't** use a Dockerfile for this. For example the command bellow synchronize (map) files from the current directory the `/usr/share/nginx/html` directory.
+There's just one catch here: is that you have to either use docker-compose or
+run it with `docker container run ....`, you **can't** use a Dockerfile for this.
+For example the command bellow synchronize (map) files from the current directory
+the `/usr/share/nginx/html` directory.
 
 ```bash
 docker container run -d --name nginx -v $(pwd):/usr/share/nginx/html nginx
