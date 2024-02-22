@@ -1,4 +1,19 @@
-# Sobre VMs dentro do Docker
+# Concepts and Stuff (improve this)
+
+## Deep dive into the `docker run -it`
+
+The idea behind it is that the `-i` is the interactive mode and allows you to map
+the standard input of your host to the docker container.
+Example: if you run an app that asks you for your name and prints it, it will
+print the default name, but not allow you to have access to the terminal for your
+to input.
+
+To solve the problem of not having access to the terminal, we use the `-t` is to
+attach the application `tty` to the container's terminal. Then in the last example
+you'll be able to access the terminal prompt, because the `tty` is also attached,
+instead of only the standard input channel.
+
+## Sobre VMs dentro do Docker
 
 Maioria dos containers dos containers rodam em um kernel Linux, o que significa
 que quando você instala o desktop Docker ou algumas das formas alternativas de
@@ -14,11 +29,13 @@ daquela pequena VM, tudo isso para você de forma transparente em segundo plano.
 - Images are made up of file system changes and metadata
 - Each layer is uniquely identified and store only once on a host
 - A container is a single read/write layer on top of the image
-- [Copy-on-write](https://adaptive.svbtle.com/fundamentals-of-docker-storage) is the technique that employs diffs from images to optimize storage and speed
+- [Copy-on-write](https://adaptive.svbtle.com/fundamentals-of-docker-storage)
+is the technique that employs diffs from images to optimize storage and speed
 
 ## Docker Networks
 
-- Containers shouldnt rely on IPs for intercomunnication as the containers lifetimes are so volatile. Use DNS instead.
+- Containers shouldnt rely on IPs for intercomunnication as the containers
+lifetimes are so volatile. Use DNS instead.
 - DNS for friendly names in built-in if you use custom virtual Networks.
 
 ## Anonymous vs Named Volumes in Docker-Compose
