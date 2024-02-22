@@ -7,7 +7,11 @@
 - Delete all images: `docker rmi -f $(docker images -a -q)` (**TAKE CARE**)
 - Delete all `EXITED` images: `docker rm $(docker ps -q -f status=exited)`
 - Use `docker system df` to see space usage.
-- The new `docker sbom` CLI command displays the SBOM (Software Bill Of Materials) of any Docker image. This feature outputs the SBOM in a table or can be exported into SPDX and CycloneDX formats.
+- The new `docker sbom` CLI command displays the SBOM (Software Bill Of Materials)
+of any Docker image. This feature outputs the SBOM in a table or can be exported
+into SPDX and CycloneDX formats.
+- To find the container IP: run `docker inspect container_id` and search for `IPAddress`
+under the `Networks/Bridge` section
 
 ## Getting Into a Container
 
