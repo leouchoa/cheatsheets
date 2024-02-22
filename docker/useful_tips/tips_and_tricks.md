@@ -12,6 +12,7 @@ of any Docker image. This feature outputs the SBOM in a table or can be exported
 into SPDX and CycloneDX formats.
 - To find the container IP: run `docker inspect container_id` and search for `IPAddress`
 under the `Networks/Bridge` section
+- To see how much an image layer takes up, use `docker history image_name`
 
 ## About ports
 
