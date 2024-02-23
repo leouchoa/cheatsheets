@@ -40,6 +40,41 @@ This means that:
 
 ## `CMD` Vs `ENTRYPOINT`
 
+Both execute commands, but:
+
+- `CMD` **replaces** the command entirely.
+- `ENTRYPOINT` **appends** the command line parameters.
+
+So in the first `Dockerfile` bellow if you would have to run
+`docker run ubuntu-sleeper sleep 10` in order to replace the
+instruction, whereas in the second `Dockerfile` you would only
+have to run `docker run ubuntu-sleeper 10`.
+
+```Dockerfile
+# Dockerfile 1
+FROM ubuntu
+
+CMD sleep 5
+```
+
+```Dockerfile
+# Dockerfile 2
+FROM ubuntu
+
+ENTRYPOINT sleep
+```
+
+If you want to specify a default value for the parameter, then
+use both `CMD` and `ENTRYPOINT`:
+
+```Dockerfile
+# Dockerfile 2
+FROM ubuntu
+
+ENTRYPOINT sleep
+CMD 5
+```
+
 ## Getting Into a Container
 
 Without `ssh` you have some options:
