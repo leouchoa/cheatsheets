@@ -16,4 +16,5 @@ under the `Networks/Bridge` section
 - To find env vars set inside a container: `docker inspect container_id`. They're
 available at `Config/Env`. Example:
 `docker run -e APP_COLOR=blue -p 38282:8080 --name blue-app kodekloud/simple-webapp`
-
+- To run docker on a remote host: `docker -H=remote-docker-engine:2375`. Example:
+`docker -H=10.123.2.1:2375 run nginx`
