@@ -1,5 +1,15 @@
 # Concepts and Stuff (improve this)
 
+## Docker Engine
+
+Composed of:
+
+- Docker CLI
+- REST API
+- Docker Daemon
+
+It uses namespaces to isolate containers.
+
 ## Deep dive into the `docker run -it`
 
 The idea behind it is that the `-i` is the interactive mode and allows you to map
@@ -29,14 +39,53 @@ daquela pequena VM, tudo isso para você de forma transparente em segundo plano.
 - Images are made up of file system changes and metadata
 - Each layer is uniquely identified and store only once on a host
 - A container is a single read/write layer on top of the image
+- The container layer is a new, writeable layer, on top of the image layer.
 - [Copy-on-write](https://adaptive.svbtle.com/fundamentals-of-docker-storage)
 is the technique that employs diffs from images to optimize storage and speed
 
 ## Docker Networks
 
+When you install docker, it automatically creates 3 networks:
+
+- bridge: all containers are attached to it by default (default network).
+  - it is a private, internal network created by the host.
+  - they get an internal IP address usually around `172.17.____` series.
+  - the containers can access each other.
+  - to access any of those containers from the **outside world**:
+    - map the ports of the containers to the ports on the docker host.
+- none:
+  - not attached to any network, no access to external networks or
+other containers.
+    -Ran in an isolated network.
+- host: removes the isolation between host and container network
+  - in this case if you run an app on port 5000, you don't need
+    to match ports, it will be automatically available at port 5000.
+    - also means you won't be able to run multiple web containers
+    on the same host, on the same port, as the ports are now common
+    to all containers in the host.
+
+- **gold tip**: all containers in a docker host can resolve each other
+with the name of the container!
+  - works because docker has a built-in DNS server that resolves
+    each other using container name.
+  - the built-in server always runs at address `127.0.0.11`
+
+If you would like to attach the container to any of these
+networs, use the `--network=desired_network` flag.
+
+![docker networks](./images/docker_networks.png "docker networks")
+
+Extra tips:
+
 - Containers shouldnt rely on IPs for intercomunnication as the containers
 lifetimes are so volatile. Use DNS instead.
 - DNS for friendly names in built-in if you use custom virtual Networks.
+- To find what is the subnet configured on bridge network:
+`docker network inspect bridge` and look for `Subnet`
+
+## User Defined Docker Networks
+
+![User Defined Docker Networks](./images/user_defined_networks.png "User Defined Docker Networks")
 
 ## Anonymous vs Named Volumes in Docker-Compose
 
@@ -89,6 +138,27 @@ the `/usr/share/nginx/html` directory.
 ```bash
 docker container run -d --name nginx -v $(pwd):/usr/share/nginx/html nginx
 ```
+
+## Registry
+
+Registry is just an image. To host our own registry, here we're using
+the open source Docker Registry.
+
+To run/create a registry server with name equals to `my-registry` using `registry:2`
+image with host port set to 5000, and restart policy set to `always`:
+
+```bash
+# create the registry image
+docker run -d -p 5000:5000 --restart=always --name my-registry registry:2
+```
+
+To push images to the registry:
+
+1. Pull/create the image: `docker pull nginx:latest`.
+2. Tag the image: `docker image tag nginx:latest localhost:5000/nginx:latest`.
+3. Push the image: `docker push localhost:5000/nginx:latest`.
+
+- Tip: To check the list of images pushed , use `curl -X GET localhost:5000/v2/_catalog`.
 
 ## Tips
 

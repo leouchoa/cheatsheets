@@ -18,3 +18,12 @@ available at `Config/Env`. Example:
 `docker run -e APP_COLOR=blue -p 38282:8080 --name blue-app kodekloud/simple-webapp`
 - To run docker on a remote host: `docker -H=remote-docker-engine:2375`. Example:
 `docker -H=10.123.2.1:2375 run nginx`
+- The mounts in docker:
+  - bind mounts: `docker run -v`
+  - volume mounts: `docker run -v /data/mysql:/var/lib/mysql mysql`
+  - volume mounts newest version:
+    `docker run \ --mount type=bind,source=/data/mysql,target=/var/lib/mysql \ mysql`
+- In the `docker ps -a` command, the `CONTAINER_ID` allows you to
+find where is the container inside the `/var/lib/docker/containers` dir.
+- Quick way to get data from inside a mysql container:
+`docker exec mysql-db mysql -pdb_pass123 -e 'use foo; select * from myTable'`

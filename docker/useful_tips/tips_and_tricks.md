@@ -1,5 +1,19 @@
 # Useful Insights
 
+## Bind Mounts vs Volume Mounts
+
+- Volume Mount: mounts a volume from `/var/lib/docker` volumes directory.
+- Bind Mount: mounts a directory from any location on the docker host.
+
+**Note**: using the `-v` flag in `docker run -v` is the old way. The
+newest and suggested way is to use the `--mount` flag. Example:
+
+```bash
+docker run \
+    --mount type=bind,source=/data/mysql,target=/var/lib/mysql \
+    mysql
+```
+
 ## About ports
 
 **Most important tip:** draw box, just draw the boxes. It will save you a **LOT**
@@ -37,6 +51,17 @@ This means that:
 - On the container there are 2 published ports
 - **On the container** the exposed ports are: 3456 and 80.
 - **On the host** the exposed ports are: 3456 and 38080.
+
+## To Find Where is a Container Image is Stored
+
+Docker folder is located at `/var/lib/docker`. If you want to find
+where a certain container is located:
+
+```bash
+docker ps -a
+```
+
+[good ref](https://www.freecodecamp.org/news/where-are-docker-images-stored-docker-container-paths-explained/)
 
 ## `CMD` Vs `ENTRYPOINT`
 
