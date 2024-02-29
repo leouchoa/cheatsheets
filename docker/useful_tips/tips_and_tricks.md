@@ -1,18 +1,5 @@
 # Useful Insights
 
-## Bind Mounts vs Volume Mounts
-
-- Volume Mount: mounts a volume from `/var/lib/docker` volumes directory.
-- Bind Mount: mounts a directory from any location on the docker host.
-
-**Note**: using the `-v` flag in `docker run -v` is the old way. The
-newest and suggested way is to use the `--mount` flag. Example:
-
-```bash
-docker run \
-    --mount type=bind,source=/data/mysql,target=/var/lib/mysql \
-    mysql
-```
 
 ## About ports
 
@@ -111,9 +98,11 @@ Note that some distros like `alpine` do not have it but instead have a `sh` comm
 
 ## Docker Volumes
 
-## Initializing Volumes
+### Initializing Volumes
 
-To create a named volume you can use the `-v` flag to specify the. So for example the code bellow would create a volume named "mysql-db", instead of a randomly generated id
+To create a named volume you can use the `-v` flag to specify the volume.
+So for example the code bellow would create a volume named "mysql-db",
+instead of a randomly generated id.
 
 ```bash
 docker container run 
@@ -121,6 +110,20 @@ docker container run
     --name mysql \
     -e MYSQL_ALLOW_EMPTY_PASSWORD=True \
     -v mysql-db:/var/lib/mysql mysql
+```
+
+### Bind Mounts vs Volume Mounts
+
+- Volume Mount: mounts a volume from `/var/lib/docker` volumes directory.
+- Bind Mount: mounts a directory from any location on the docker host.
+
+**Note**: using the `-v` flag in `docker run -v` is the old way. The
+newest and suggested way is to use the `--mount` flag. Example:
+
+```bash
+docker run \
+    --mount type=bind,source=/data/mysql,target=/var/lib/mysql \
+    mysql
 ```
 
 ## Cleaning Up Space
