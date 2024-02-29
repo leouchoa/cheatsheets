@@ -58,6 +58,20 @@ daquela pequena VM, tudo isso para você de forma transparente em segundo plano.
 - [Copy-on-write](https://adaptive.svbtle.com/fundamentals-of-docker-storage)
 is the technique that employs diffs from images to optimize storage and speed
 
+### Copy-on-write
+
+Consider two boxes: the image box and the container box.
+
+The container box is the built image. The container box is the process.
+You interact with the container, not the image, because the container
+is who run processess.
+
+Anytime you want to modify a file from the image, instead of modifying the file
+inside the image and having to rebuild the whole container, you copy that file
+into the container box. That's Copy-on-write.
+
+**Remember that this file does not persist, unless you mount it outside your container.**
+
 ## Docker Networks
 
 When you install docker, it automatically creates 3 networks:

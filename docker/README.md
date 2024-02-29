@@ -1,6 +1,7 @@
 # Quick Tips
 
 - Stop all containers: `docker stop $(docker ps -a -q)`
+- Always remember that docker stores all it's data inside `/var/lib/docker`
 - Delete all containers, include their volumes: `docker rm -vf $(docker ps -a -q)`
 - Delete all images: `docker rmi -f $(docker images -a -q)` (**TAKE CARE**)
 - Delete all `EXITED` images: `docker rm $(docker ps -q -f status=exited)`
@@ -23,6 +24,8 @@ available at `Config/Env`. Example:
   - volume mounts: `docker run -v /data/mysql:/var/lib/mysql mysql`
   - volume mounts newest version:
     `docker run \ --mount type=bind,source=/data/mysql,target=/var/lib/mysql \ mysql`
+  - Note that docker will automatically create the volume, you don't
+  need to manually create it with a `docker volume create ...`
 - In the `docker ps -a` command, the `CONTAINER_ID` allows you to
 find where is the container inside the `/var/lib/docker/containers` dir.
 - Quick way to get data from inside a mysql container:
