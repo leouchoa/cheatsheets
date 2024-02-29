@@ -10,6 +10,21 @@ Composed of:
 
 It uses namespaces to isolate containers.
 
+## Namespaces
+
+A linux system os composed of a set of process ids (`pid`s) and a container
+is the same. To differentiate and effectively isolate the system (host)
+from the subsystem (container) `pid`s is the task of namespaces.
+
+Every `pid` in the host system has the container `pid` and you can find it
+with a `grep` command. Example:
+
+```bash
+docker run -d --rm -p 8888:8080 tomcat:9.0
+docker exec <CONTAINER_ID> ps -eaf # this will give you an pid
+ps -eaf | grep docker-java-home # this will give you another pid
+```
+
 ## Deep dive into the `docker run -it`
 
 The idea behind it is that the `-i` is the interactive mode and allows you to map
