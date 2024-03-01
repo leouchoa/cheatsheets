@@ -1,6 +1,14 @@
 # Swarm
 
-Container orchestration system.
+It's a container orchestration system that consists of multiple Docker hosts
+which run in Swarm mode.
+
+When you create a swarm service, you define its optimal state - number of replicas,
+network and storage resources available to it, ports the service exposes
+to the outside world, and more. Docker works to maintain that desired state.
+
+For instance, if a worker node becomes unavailable, Docker schedules
+that node's tasks on other nodes.
 
 ## Concepts
 
@@ -59,3 +67,33 @@ The best solution when all your managers go down is to bring all of them back on
 But if you can bring at least one up, then run `docker swarm init --force-new-cluster`.
 After that you can promote new nodes to managers by going to a worker node
 and running `docker node promote`.
+
+## Networks
+
+**Gold tip**: always remember that all containers in docker can resolve their
+names because docker has a built-in dns server! This allows you to specify
+containers by their name, when using services like mysql connections, instead
+of using IPs!
+
+- The built-in DNS server runs on 127.0.0.11
+
+### Overlay
+
+Suppose you have some containers inside multiple hosts, for example 3 hosts
+with 2 containers each, and you want those containers to share the same
+internal private network. Then you can create a new network, the *overlay* network,
+that achieves exactly that and attach the containers to that network.
+
+### Ingress Networks
+
+Suppose you have a swarm node that has one container with two replicas. Those containers
+work on port 5000 and you map them to port 80 on the host. But then you've got a
+problem because the mappings are not unique.
+That's when the ingress network comes in.
+
+The ingress network is automatically created by docker swarm that has a load balancer
+to redirects traffic to the appropriate ports/containers, effectively creating
+a routing mesh and helps in routing traffic.
+
+Just so you know: the ingress network is a type of an overlay network, meaning it
+is a single network that spans through the nodes.
