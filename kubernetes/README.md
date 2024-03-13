@@ -7,6 +7,16 @@
 - suppose you want to change a config of a pod. Instead of deleting the pod, you
 can edit the file and update the pod by running `kubectl apply -f your_k8s_def_file.yaml`
 
+## Replicasets
+
+- scaling up the number of pods:
+  - `kubectl scale --replicas=desired_number -f yaml_file.yaml`, but this does
+  not automatically update the replicaset
+  - `kubectl scale --replicas=desired_number replicaset myapp-replicaset`
+- creating Replicasets: `kubectl create -f yaml_file`
+- deleting replicaset: `kubectl delete replicaset myapp-replicaset-f yaml_file.yaml`
+- listing replicasets: `kubectl get replicaset`
+
 Remember that the bare minimum of a k8s yaml file is:
 
 - apiVersion
