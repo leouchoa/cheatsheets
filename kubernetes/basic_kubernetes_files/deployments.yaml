@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicationController
+metadata:
+  name: your_pod_name
+  labels:
+    app: name_of_your_app
+    type: the_type_of_your_pod
+spec:
+  template:
+    metadata:
+      name: your_pod_name
+      labels:
+        app: name_of_your_app
+        type: the_type_of_your_pod
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: the_type_of_your_pod
