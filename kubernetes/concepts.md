@@ -54,6 +54,10 @@ i.e, helps us connect apps together with other apps or users. For example, if yo
 group your apps in front/back/db, services is who stablish connectivity between them.
 Their goal is to enable loose coupling between applications.
 
+Just to be clear: The difference between `ClusterIP` and `NodePort` is that
+`NodePort` assumes that this group will be facing external users, while `ClusterIP`
+is not, being mostly backend services.
+
 ### Routing
 
 Services are used to deal with communication between an external user and
