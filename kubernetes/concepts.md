@@ -42,9 +42,12 @@ use a separate provider.
 
 Types of services:
 
-- NodePort
-- ClusterIP
-- LoadBalancer
+- NodePort: used the manage serving the pods by mapping ports
+- ClusterIP: service that creates a single interface for us to connect to it
+and let the LoadBalancer work, instead or worrying IPs and stuff.
+- LoadBalancer: designed to mostly work with cloud providers, for easy
+integration with their load balancer. If you try to use this on a VM, for
+example, it would have the same effect of using a NodePort service.
 
 They enable communication between various components within/outside of the app,
 i.e, helps us connect apps together with other apps or users. For example, if you
