@@ -30,3 +30,30 @@ Note: even if you have only one pod, the ReplicaSets controller will make sure t
 if this pod goes down, another gets spinning up asap.
 
 The ReplicaSets controller is also responsible for load balancing.
+
+## Summary of Networking in kubernetes
+
+Kubernetes solves the problem of networking inside one machine, where each pod
+has it's own IP address, but communication between machines is left to the user,
+so it has to manage cluster Networking by itself, where usually you'll have to
+use a separate provider.
+
+## Kubernetes Services
+
+Types of services:
+
+- NodePort
+- ClusterIP
+- LoadBalancer
+
+They enable communication between various components within/outside of the app,
+i.e, helps us connect apps together with other apps or users. For example, if you
+group your apps in front/back/db, services is who stablish connectivity between them.
+Their goal is to enable loose coupling between applications.
+
+### Routing
+
+Services are used to deal with communication between an external user and
+your pod application. For example, if your machine has an IP of 162.197.0.1
+and your 10.244.0.2 then you need to map them through the node and the
+pod into the service for your user to see the app.
