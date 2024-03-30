@@ -7,6 +7,7 @@ dir with terraform config files.
 - `terraform plan`: creates a preview of the execution plan.
 - `terraform apply`: apply the config plan.
 - `terraform destroy`: destroys the provisioned resources.
+- `terraform show`: shows the current `terraform` state.
 
 ## Concepts
 
