@@ -5,10 +5,15 @@
 - `terraform init`: **first command to run** to init the current
 dir with terraform config files.
 - `terraform plan`: creates a preview of the execution plan.
+  - it also refreshes the state.
 - `terraform apply`: apply the config plan.
 - `terraform destroy`: destroys the provisioned resources.
 - `terraform show`: displays the current `terraform` state.
 - `terraform output`: displays output variables
+
+Important: take notice that the `terraform.tfstate` file might have
+sensitive information (e.g: aws credentials, secrets, etc.) and so you must
+not version it in github.
 
 ## Concepts
 
