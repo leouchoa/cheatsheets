@@ -74,3 +74,43 @@ To learn more:
 
 - [digital ocean blogpost](https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure)
 - [hashicorp blogpost](https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure)
+
+### Lifecycle Rules
+
+Even though terraform employs immatuble infrastructure, there are many cases where
+don't want to destroy or alter a given resource, like a production database. In that
+case we can employ some rules on how to deal with such scenarios:
+
+- `create_before_destroy`
+- `prevent_destroy`
+- `ignore_changes`
+
+They go on code like the following example:
+
+```terraform
+resource "local_file" "foo" {
+  content  = "foo!"
+  filename = "/root/asd.txt"
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+### Data Sources
+
+Suppose you add another file with important data into your terraform directory
+and you would like to read the data inside this file. Example:
+
+```terraform
+resource "local_file" "foo" {
+  content  = "foo!"
+  filename = data.local_file.dog.content
+}
+
+data "local_file" "dog" {
+  filename = "/root/dog.txt"
+}
+```
+
+Usually used to read data from remote resources, like ec2s and s3s data.
