@@ -22,6 +22,9 @@ dir with terraform config files.
     - `terraform graph`: it creates a graph in the `.dot` file format,
     which can be used to feed a library like `graphviz` to visualize the
     plot.
+    - `terraform state list`: list resources being used.
+    - `terraform state show resource_type.resource_name`: shows the current
+    state of the resource.
 
 Important: take notice that the `terraform.tfstate` file might have
 sensitive information (e.g: aws credentials, secrets, etc.) and so you must
