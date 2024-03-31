@@ -7,9 +7,21 @@ dir with terraform config files.
 - `terraform plan`: creates a preview of the execution plan.
   - it also refreshes the state.
 - `terraform apply`: apply the config plan.
+- `terraform validate`: validates if the syntax is correct.
+- `terraform fmt`: a linter.
 - `terraform destroy`: destroys the provisioned resources.
-- `terraform show`: displays the current `terraform` state.
-- `terraform output`: displays output variables
+- `terraform refresh`: queries the resource state and updates the state file.
+  - **it does not modify the infrastructure resource, only the state file.**
+  - automatically run by `plan` and `apply` commands.
+- displaying commands:
+  - `terraform show`: displays the current `terraform` state.
+  - `terraform output`: displays output variables
+  - `terraform providers`: list the current providers/plugins.
+    - the `mirror` endpoint is very good to copy providers config
+    file into another place. Example: `terraform providers mirror /new/path`
+    - `terraform graph`: it creates a graph in the `.dot` file format,
+    which can be used to feed a library like `graphviz` to visualize the
+    plot.
 
 Important: take notice that the `terraform.tfstate` file might have
 sensitive information (e.g: aws credentials, secrets, etc.) and so you must
