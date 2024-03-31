@@ -60,3 +60,14 @@ a plugin to connect to the provider to provision the resource.
 
 Example: to a create a local file on your system, use the `"local_file"` plugin
 in the [terraform registry website](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file).
+
+### Immutable Infrastructure
+
+Means that terraform will destroy the resource and recreate it entirely, instead
+of updating a part of it. This is to take full advantage of cloud Infrastructure
+in order to being everything from scratch, helping to prevent deployment failures.
+
+To learn more:
+
+- [digital ocean blogpost](https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure)
+- [hashicorp blogpost](https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure)
