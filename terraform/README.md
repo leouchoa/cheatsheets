@@ -114,3 +114,18 @@ data "local_file" "dog" {
 ```
 
 Usually used to read data from remote resources, like ec2s and s3s data.
+
+### Version Constraints
+
+To lock plugins version. Example of a `main.tf` file:
+
+```terraform
+terraform {
+  required_providers {
+    helm = {
+      source = "hashicorp/helm"
+      version = "2.12.1"
+    }
+  }
+}
+```
