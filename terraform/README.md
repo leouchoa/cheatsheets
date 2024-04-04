@@ -27,6 +27,14 @@ dir with terraform config files.
     state of the resource.
 
 Important: take notice that the `terraform.tfstate` file might have
-sensitive information (e.g: aws credentials, secrets, etc.) and so you must
-not version it in github.
+sensitive information (e.g: aws credentials, secrets, etc.) and so you **must
+not version it in github**.
 
+More commands available at the [spacelift blogpost](https://spacelift.io/blog/terraform-commands-cheat-sheet).
+
+## Usual Workflow
+
+1. initialize repo: `terraform init`
+2. check what changes would be made: `terraform plan`
+3. apply the changes in the infrastructure: `terraform apply`
+4. check state with `terraform state ...`

@@ -1,5 +1,11 @@
 # Concepts
 
+[Terraform architecture consists mainly of](https://spacelift.io/blog/terraform-architecture):
+
+1. Terraform core
+2. Providers
+3. [State file](https://spacelift.io/blog/terraform-state#what-is-terraform-state)
+
 ## HashiCorp Configuration Language - HCL
 
 Usual format:
@@ -97,3 +103,18 @@ terraform {
   }
 }
 ```
+
+## Provisioners vs Providers
+
+As explained by [spacelift](https://spacelift.io/blog/terraform-provisioners),
+Terraform providers are plugins used to authenticate
+with cloud platforms, services or other tools, allowing users to create, modify,
+and delete resources declared in the Terraform configurations. Provisioners are
+used only for copying files or executing local or remote operations.
+
+**You should avoid using provisioners, consider them a last resort**,
+but there three types:
+
+- file: used for copying
+- local-exec: used for local operations
+- remote-exec: used for remote operations.
