@@ -118,3 +118,29 @@ but there three types:
 - file: used for copying
 - local-exec: used for local operations
 - remote-exec: used for remote operations.
+
+## Tainted Resources
+
+Tainted resources are resources that are marked and interpreted as damaged or degraded.
+In this case the resource is considered to be in an undesirable or unexpected state
+and terraform basically forces the recreation of resources **even if the configuration**
+matches the current state.
+
+**Note:** The taint command is deprecated since Terraform version 0.15.2.
+If you are using a version that is lower than this, continue using taint and untaint.
+Otherwise, it is recommended to use the replace command.
+
+Example: suppose you have to two aws ec2 resources, called `my_vm_1` and `my_vm_2`.
+Then run `terraform apply -replace="aws_instance.my_vm_2"` to replace only the
+second instance.
+
+### References for Tainting
+
+- [spacelift blog](https://spacelift.io/blog/terraform-taint)
+- [official doc](https://developer.hashicorp.com/terraform/cli/commands/taint)
+
+## Modules
+
+Are the way you organize your code. You can also download module templates from the
+terraform registry. Here's an [example](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest/submodules/iam-user)
+of a terraform module for configuring iam users in aws.
