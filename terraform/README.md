@@ -25,6 +25,15 @@ dir with terraform config files.
     - `terraform state list`: list resources being used.
     - `terraform state show resource_type.resource_name`: shows the current
     state of the resource.
+    - `terraform state pull`: pulls remote state metadata.
+- `terraform console`: gives access to console to evaluate expressions.
+  - attention: it will get information from you state. Meaning that if
+  you don't have a state, you must run `terraform init` first or pull
+  it from you remote backend.
+  - remember that variables are available at `var.variable_name`
+- `terraform workspace ...`:
+  - `terraform workspace new`: creates a new workspace in `./terraform.tfstate.d/`
+  - `terraform workspace select ws_name`: switches to desired workspace
 
 Important: take notice that the `terraform.tfstate` file might have
 sensitive information (e.g: aws credentials, secrets, etc.) and so you **must
@@ -37,4 +46,10 @@ More commands available at the [spacelift blogpost](https://spacelift.io/blog/te
 1. initialize repo: `terraform init`
 2. check what changes would be made: `terraform plan`
 3. apply the changes in the infrastructure: `terraform apply`
-4. check state with `terraform state ...`
+4. check state with:
+    - `terraform state pull`: pulls state from remote backend
+    - `terraform state ...`
+
+## Good References
+
+- [terraform docs about function](https://developer.hashicorp.com/terraform/language/functions)
