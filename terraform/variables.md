@@ -3,7 +3,7 @@
 ## How To Define Them
 
 You can define variables to better organize your code by putting them
-inside a specific file (name for example, `varibles.tf`) and define them:
+inside a specific file (name for example, `variables.tf`) and define them:
 
 ```terraform
 variable "your_variable" {
