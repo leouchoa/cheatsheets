@@ -37,3 +37,22 @@ data:
   {{- end }}
 
 ```
+
+## Named Template Files
+
+They're [used to reduced code duplication](https://helm.sh/docs/chart_template_guide/named_templates/)
+in a way that doesn't break the manifest file and are usually stored
+in a file called `_helpers.tpl`.
+
+An important point here is in regards to indenting. When adding your specs from
+`_helpers.tpl` into the manifest, you can either used the `template` or `include`
+functions. It is [suggested](https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function)
+to used the `include` function to get the correct formatting by adding the
+`indent` action.
+
+## Hook
+
+You can add [hook functions](https://helm.sh/docs/topics/charts_hooks/) to run certain
+tasks during a specific point of your deployment, for example to backup a database
+before the app deployment. They're usually a yaml file that have a property called
+annotations.

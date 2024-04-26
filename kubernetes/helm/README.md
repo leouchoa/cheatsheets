@@ -30,10 +30,11 @@ of it
 - you can see the yaml that helm generates with: `helm template ./chart-dir --debug`
 - that are errors that will only happen inside k8s. To chatch them,
 install them with the `--dry-run` flag: `helm install RELEASE_NAME ./chart-dir --dry-run`
+- if you're repeating an entry a lot of times, consider using named templates.
 
 ## Quick Examples
 
-### Deploy Apache
+### Deploy Apache Example
 
 Deploy the `Apache` application on the cluster using the `apache` from the `bitnami`
 repository and set the release `Name` to `amaze-surf`:
