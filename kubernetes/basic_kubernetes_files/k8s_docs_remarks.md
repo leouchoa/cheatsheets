@@ -1,0 +1,4 @@
+# Remarks
+
+[Usually you don't need to create Pods directly, even singleton Pods.
+Instead, create them using workload resources such as Deployment or Job](https://kubernetes.io/docs/concepts/workloads/pods/#workload-resources-for-managing-pods)
