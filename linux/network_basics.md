@@ -1,5 +1,7 @@
 # Network Basic Commands
 
+<!-- TODO: drawback of nslookup and Record Types/CNAMES -->
+
 - To query a hostname from a DNS server: `nslookup` or `dig`.
 - List and modify interfaces for the host: `ip link`
 - List IPs addresses assigned to the interfaces: `ip addr`
