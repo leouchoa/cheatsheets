@@ -60,3 +60,9 @@ spec:
   - error message: no matches for kind "Replicaset" in version "vXYZ"
   - Solution: run the command `kubectl explain replicaset`
     and check if the version output is the same of your k8s definition file
+
+## DNS Subdomain
+
+The name of a Pod must be a valid DNS subdomain value, but this can produce
+unexpected results for the Pod hostname. For best compatibility, the name should
+follow the more restrictive rules for a [DNS label](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names).

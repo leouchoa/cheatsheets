@@ -38,6 +38,13 @@ has it's own IP address, but communication between machines is left to the user,
 so it has to manage cluster Networking by itself, where usually you'll have to
 use a separate provider.
 
+[Each Pod is assigned a unique IP address for each address family. Every container
+in a Pod shares the network namespace, including the IP address and network ports.
+Inside a Pod (and only then), the containers that belong to the Pod can communicate
+with one another using localhost. When containers in a Pod communicate with
+entities outside the Pod, they must coordinate how they use the shared network
+resources (such as ports).](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
+
 ## Kubernetes Services
 
 Types of services:

@@ -18,7 +18,7 @@ git worktree remove choose_your_path
 # do stuff!
 ```
 
-### Tips and Tricks
+### Worktrees Tips and Tricks
 
 - Usually people either make a worktree
   - outside the repo or
@@ -65,7 +65,38 @@ your changes in the Working Directory, as unstaged changes.
 
 Discard all the changes made between HEAD and the specified commit.  
 
-### Tips and Tricks
+### Reset Tips and Tricks
 
 1. git reset hard discards all working directory and index changes:
 just run `git rest --hard` and all staged and unstaged files will disapear.
+
+## Updating `ssh` remote path
+
+Suppose you're working in a repo called `git@github.com:username/example_repo.git`,
+where `username` could be your user (`leouchoa`) or an organization (`CoolOrg`).
+But now you have new ssh keys and your `~/.ssh/config` looks like this:
+
+```bash
+```bash
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+
+Host github.com-work
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/work
+```
+
+You can update your remote path to point to those new `ssh` keys so that
+you keep perfoming `git` operations without having to reclone the repo:
+
+```bash
+git remote set-url origin git@github.com-work:username/example_repo.git
+git remote -v #to check if it worked
+git fetch #to check if it worked
+```
+
+Now git will look for your `~/.ssh.work` keys, instead of `~/.ssh/id_ed25519`
+keys.
