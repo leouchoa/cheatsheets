@@ -55,3 +55,18 @@ The other common value for text-decoration is line-through to strike out “dele
 text. But, remember that meaning should always be conveyed through HTML—not CSS.
 It’s better to use the `<ins>` and `<del>` elements instead of adding a line-through
 style to, say, an ordinary `<p>` element.
+
+## Line Height
+
+The following properties describe a bit about space between text:
+
+- margin-top (or padding-top)
+- margin-bottom (or padding-bottom)
+- line-height
+
+The first two they define the vertical space between separate paragraphs. The
+new line-height property determines the amount of space between lines in the
+same paragraph.
+
+In traditional typography, line-height is called “leading” because printers
+used little strips of lead to increase the space between lines of text.
