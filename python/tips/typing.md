@@ -18,3 +18,9 @@ By contrast, if `<TYPE_HERE>` is `list[Any]`, what you're saying is that if you
 input a box of apples, the output may not be a box of apples, it may be a box of
 oranges even if they are sliced or grounded. The function will work anyway, but
 the underlaying content may be different.
+
+## Resources
+
+- [Type Hints Cheatsheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+- [python readthedocs typing](https://typing.readthedocs.io/en/latest/)
+- [python typing docs](https://docs.python.org/3/library/typing.html)
