@@ -112,6 +112,23 @@ h6 {
 }
 ```
 
+## The `>` direct children selector
+
+The `>` is a [child combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator), used to select direct children of a specified
+element. For example, The rule `ul > li { color: red; }` will apply the CSS
+property color: red to any `<li>` elements that are direct children of a `<ul>`
+element.
+
+```css
+<ul>
+  <li>This item will be red.</li>
+  <li>This item will also be red.</li>
+  <ol>
+    <li>This item will not be red because it is a child of an <ol>.</li>
+  </ol>
+</ul>
+```
+
 ## Resources
 
 - [udacity frontend course](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
