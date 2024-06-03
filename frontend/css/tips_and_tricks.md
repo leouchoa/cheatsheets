@@ -36,3 +36,22 @@ body {
 
 In this example, one would have font bigger than 16px, and two would have font
 smaller than 16px.
+
+## Underlined Text
+
+The text-decoration property determines whether text is underlined or not. By
+setting it to none, we can remove the default underline from all of our links.
+We’ll discuss link styles in-depth later on.
+
+```css
+a {
+  text-decoration: none;
+}
+```
+
+## Strikethrough Text
+
+The other common value for text-decoration is line-through to strike out “deleted”
+text. But, remember that meaning should always be conveyed through HTML—not CSS.
+It’s better to use the `<ins>` and `<del>` elements instead of adding a line-through
+style to, say, an ordinary `<p>` element.
