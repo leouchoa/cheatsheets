@@ -70,3 +70,26 @@ same paragraph.
 
 In traditional typography, line-height is called “leading” because printers
 used little strips of lead to increase the space between lines of text.
+
+## External Fonts
+
+There are a number of ways to host fonts from external sources. One commonly
+used example is [Google Fonts](https://fonts.google.com/), which provides a
+great number of fonts free for use in web projects. If you go to the Google
+Fonts website linked below, you can select a font and then you will be provided
+with the line of code to link your font of choice.
+That link goes in the head section of your code like this:
+
+```html
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+```
+
+In the CSS portion of your code, you could then set an elements property like this:
+
+```css
+.box{
+  font-family: 'Montserrat', sans-serif;
+}
+```
