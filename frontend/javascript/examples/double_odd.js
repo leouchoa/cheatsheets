@@ -1,6 +1,6 @@
 const doubleOdd = (arr) =>
   arr.map((num) => {
-    if (num % 2 != 0) {
+    if (num % 2 !== 0) {
       return num * 2;
     } else return num;
   });
