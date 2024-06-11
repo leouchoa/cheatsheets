@@ -2,6 +2,10 @@
 
 List of events available at [MDN](https://developer.mozilla.org/en-US/docs/Web/Events).
 
+Main syntax:
+
+> `<event-target>.addEventListener(<event-to-listen-for>, <function-to-run-when-an-event-happens>);`
+
 ## Listening to Events
 
 ```html
