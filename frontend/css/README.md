@@ -1,5 +1,11 @@
 # CSS
 
+## Tricks
+
+- [background](https://developer.mozilla.org/en-US/docs/Web/CSS/background):
+  shorthand property that sets all of the background styles in one statement,
+  including the background color.
+
 ## Important Tips
 
 1. At the highest level CSS Grid excels at creating layouts for a webpage, while
