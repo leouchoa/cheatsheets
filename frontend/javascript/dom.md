@@ -16,6 +16,14 @@ The process works in this order:
 3. Tokens are converted to Nodes
 4. Nodes are converted to the DOM
 
+In other words:
+
+1. characters
+2. tags
+3. tokens
+4. nodes
+5. DOM
+
 ## The Details
 
 The browser receives a stream of HTML. The bytes are run through a parsing
