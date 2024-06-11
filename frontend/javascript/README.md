@@ -1,2 +1,7 @@
 # js_cheatsheet
-My javascript reference repository. The goal is to gather intersting and usefull things to accelerate learning and coding.
+
+javascript reference repository.
+
+## Valuable Resources
+
+- [MDN on Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
