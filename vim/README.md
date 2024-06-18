@@ -2,14 +2,13 @@
 
 My cheatsheet for navigating inside vim
 
-<!-- TODO: organize headings -->
-
 ## Listing keybinds
 
 - `:help index` will show you every default key-bindings.
 - `:map` will show you every custom mapping.
-- `:map <leader>` will show you every custom <leader> mapping.
-- `:verbose nmap` will show you every custom normal mode mapping and where they are defined.
+- `:map <leader>` will show you every custom `<leader`> mapping.
+- `:verbose nmap` will show you every custom normal mode mapping and where they
+are defined.
 
 [Reference](https://stackoverflow.com/questions/27458206/is-there-a-way-to-see-all-vim-keybindings)  
   
@@ -29,14 +28,17 @@ My cheatsheet for navigating inside vim
 
 Consider this code:
 
-```
-L1: raise HTTPException(
-L2:   status_code=status.HTTP_404_NOT_FOUND,
-L3:   detail=f"post with id {id} not found"
-L4: )
+```python
+raise HTTPException(
+  status_code=status.HTTP_404_NOT_FOUND,
+  detail=f"post with id {id} not found"
+)
 ```
 
-where LX is the line numbering. If you go on Line 1 (L1) and press `V%`, you'll see the vim is smart enough to notice that this code is scope inside parantheses and will select all the text within it. In this case you can then proceed to delete this text. This also works for brackets.
+where LX is the line numbering. If you go on Line 1 (L1) and press `V%`, you'll
+see the vim is smart enough to notice that this code is scope inside parantheses
+and will select all the text within it. In this case you can then proceed to
+delete this text. This also works for brackets.
 
 You can achieve to this by using `vi(` or `vi)`.
 
@@ -71,6 +73,7 @@ data_struct[0] = "heheeheh";
 
 If you v-block select those lines and press `g` + `CTRL` + `A`, then you'll get a auto-increment in the first incrementable item. (ofc you can just v-line the text and use it)
 
+- You move through the changelist with `g;` (forward) and `g,` (backward)
 - Going back to where you writing text: `gi`
 - Going back to your last visual mode selection: `gv`
 - Deleting lines containing certain word: `:g/word/d`
