@@ -1,6 +1,6 @@
 # js_cheatsheet
 
-javascript reference repository.
+Javascript reference repository.
 
 ## Valuable Resources
 
