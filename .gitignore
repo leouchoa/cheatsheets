@@ -1,2 +1,7 @@
 .DS_Store
 frontend/javascript/examples/.eslintrc
+cpp/a_star_algo/
+cpp/basics/build
+cpp/basics/class/a.out
+cpp/basics/hashmaps/a.out
+cpp/basics/hashmaps/data.txt
