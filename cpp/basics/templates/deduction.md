@@ -7,9 +7,6 @@ to specify it's type every time. But that only works fully on c++ 17.
 #include <assert.h>
 #include <vector>
 
-#include <assert.h>
-#include <vector>
-
 template <typename Type> Type Max(Type a, Type b) { return a > b ? a : b; }
 
 int main() {
