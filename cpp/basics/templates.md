@@ -15,9 +15,12 @@ compiler then expands the code using the types that are passed as parameters.
 template <typename Type> Type Sum(Type a, Type b) { return a + b; }
 
 int main() { std::cout << Sum<double>(20.0, 13.7) << "\n"; }
+```
 
-Because Sum() is defined with a template, when the program calls Sum() with doubles as parameters, the function expands to become:
+Because Sum() is defined with a template, when the program calls `Sum()` with
+doubles as parameters, the function expands to become:
 
+```cpp
 double Sum(double a, double b) {
     return a+b;
 }
@@ -51,3 +54,29 @@ In order to instantiate a templatized class, use a templatized constructor,
 for example: `Sum<double>(20.0, 13.7)`. You might recognize this form as the
 same form used to construct a vector. That's because vectors are indeed a
 generic class!
+
+## Examples
+
+### Product
+
+```cpp
+#include <assert.h>
+
+// Generic function that multiplies two parameters
+template <typename Type> Type Product(Type a, Type b) { return a * b; }
+
+int main() { assert(Product<int>(10, 2) == 20); }
+```
+
+### Max
+
+```cpp
+#include <assert.h>
+
+template <typename Type> Type Max(Type a, Type b) { return a > b ? a : b; }
+
+int main() {
+  assert(Max<int>(10, 50) == 50);
+  assert(Max<double>(5.7, 1.436246) == 5.7);
+}
+```
