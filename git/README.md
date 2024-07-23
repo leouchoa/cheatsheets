@@ -2,6 +2,13 @@
 
 ## IDK
 
+### Log Searching
+
+- Finding commits of __when__ something existed: `git log -S search_pattern`.
+- Line history search: `git log -L :your_fn_or_class_or_idk:filename.ext`
+  - accepts regex: `git log -L :your_regex:filename.ext`
+  - accepts range of lines: `...`
+
 ### Syntax
 
 - parent searching:
