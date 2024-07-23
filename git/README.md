@@ -19,6 +19,12 @@
   - find commits reachable from `your_branch` but not from `master`
   - you can revert the order `your_branch..master`
 
+### Grep
+
+- context: `git grep your_pattern .py` (search only for python files)
+- `and`: `git grep your_pattern --and another_pattern .py`
+(search only for python files with two patterns)
+
 ## Worktrees
 
 Usually used to fix things. Instead of using a `git clone` in the repo to get a
