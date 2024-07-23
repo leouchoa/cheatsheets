@@ -1,5 +1,24 @@
 # Notes on Using Git
 
+## IDK
+
+### Syntax
+
+- parent searching:
+  - either with `~` or `^`
+  - tilde (`~`): get the parent of the thing (`HEAD`, `branch_name`, ...).
+  - caret (`^`): like `~`, but useful mostly in merges because of
+  multiple paths.
+  - Examples:
+    - `git show HEAD~` reads as: "show HEAD first parent"
+    - `git show HEAD~2` reads as: "show HEAD grandparent"
+    - `git show HEAD~3` reads as: "show HEAD grand grandparent"
+- triple dot: `git show master...your_branch`
+  - find commits reachable from either `your_branch` or `master`, but not both.
+- double dot: `git show master..your_branch`
+  - find commits reachable from `your_branch` but not from `master`
+  - you can revert the order `your_branch..master`
+
 ## Worktrees
 
 Usually used to fix things. Instead of using a `git clone` in the repo to get a
