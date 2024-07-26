@@ -51,6 +51,13 @@ explicitly own it.
 3. The weak pointer `std::weak_ptr` behaves similar to the shared pointer but
 does not increase the reference counter.
 
+- You can only create weak pointers out of shared pointers or out of another
+weak pointer.
+
+- With a weak pointer, even though this type does not prevent an object from
+being deleted, the validity of its resource can be checked, using the
+`expired()` function.
+
 ## Basic Example Using Unique Pointers
 
 ```cpp
@@ -98,4 +105,45 @@ The output will be:
 shared pointer count = 1
 shared pointer count = 2
 shared pointer count = 1
+```
+
+## Basic Example Using Weak Pointers
+
+```cpp
+#include <iostream>
+#include <memory>
+
+int main() {
+  std::shared_ptr<int> mySharedPtr(new int);
+  std::cout << "shared pointer count = " << mySharedPtr.use_count() << std::endl;
+
+  std::weak_ptr<int> myWeakPtr1(mySharedPtr);
+  std::weak_ptr<int> myWeakPtr2(myWeakPtr1);
+  std::cout << "shared pointer count = " << mySharedPtr.use_count() << std::endl;
+
+  // std::weak_ptr<int> myWeakPtr3(new int); // COMPILE ERROR
+
+  return 0;
+}
+```
+
+Use of the `expired()` function:
+
+```cpp
+#include <iostream>
+#include <memory>
+
+int main() {
+  std::shared_ptr<int> mySharedPtr(new int);
+  std::weak_ptr<int> myWeakPtr(mySharedPtr);
+
+  mySharedPtr.reset(new int);
+
+  if (myWeakPtr.expired() == true)
+  {
+      std::cout << "Weak pointer expired!" << std::endl;
+  }
+
+  return 0;
+}
 ```
