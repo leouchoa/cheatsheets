@@ -135,3 +135,43 @@ DELETING instance of MyMovableClass at 0x16ceaab98
 ```
 
 Note the expanding memory usage to copy!
+
+### Final Example
+
+Update the example code with:
+
+```cpp
+void useObject(MyMovableClass obj) {
+  std::cout << "using object " << &obj << std::endl;
+}
+
+int main() {
+  MyMovableClass obj1(100); // constructor
+
+  useObject(obj1);
+
+  MyMovableClass obj2 = MyMovableClass(200);
+  // transfer ownership of that temporary object to the function scope, which saves 
+  // us one expensive deep-copy. 
+  useObject(std::move(obj2));
+
+  return 0;
+}
+```
+
+Which should print something like:
+
+```bash
+CREATING instance of MyMovableClass at 0x16b9f2b98 allocated with size = 400 bytes
+COPYING content of instance 0x16b9f2b98 to instance 0x16b9f2b88
+using object 0x16b9f2b88
+DELETING instance of MyMovableClass at 0x16b9f2b88
+CREATING instance of MyMovableClass at 0x16b9f2b68 allocated with size = 800 bytes
+MOVING (c’tor) instance 0x16b9f2b68 to instance 0x16b9f2b58
+using object 0x16b9f2b58
+DELETING instance of MyMovableClass at 0x16b9f2b58
+DELETING instance of MyMovableClass at 0x16b9f2b68
+DELETING instance of MyMovableClass at 0x16b9f2b98
+```
+
+To show you the difference between copying and moving dynamics.
