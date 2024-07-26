@@ -2,6 +2,15 @@
 
 ## IDK
 
+### Bundling
+
+You can your project to send it somewhere else:
+
+1. Bundle your branch: `git bundle create repo.bundle HEAD <master/main/dev/idk>`
+2. Send it!
+3. To unpack this bundle, just clone as your would with and url:
+`git clone repo.bundle your_cool_repo`
+
 ### Log Searching
 
 - Finding commits of __when__ something existed: `git log -S search_pattern`.
