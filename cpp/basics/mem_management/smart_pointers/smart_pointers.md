@@ -39,9 +39,14 @@ sharing is required at a later stage.
 return type for many functions: the possibility to convert it to a shared pointer!
 
 2. The shared pointer `std::shared_ptr` points to a heap resource but does not
-explicitly own it. There may even be several shared pointers to the same
-resource, each of which will increase an internal reference count. As soon as
-this count reaches zero, the resource will automatically be deallocated.
+explicitly own it.
+
+- They keep a reference counter on how many of them point to the same memory
+  resource. There may even be several shared pointers to the same
+  resource, each of which will increase an internal reference count.
+
+- As soon as this count reaches zero, the resource will automatically be
+  deallocated.
 
 3. The weak pointer `std::weak_ptr` behaves similar to the shared pointer but
 does not increase the reference counter.
@@ -64,4 +69,33 @@ void UniquePointer()
     *unique = 2; // assign a value
     // delete is not neccessary
 }
+```
+
+## Basic Example Using Shared Pointers
+
+```cpp
+#include <iostream>
+#include <memory>
+
+int main() {
+  std::shared_ptr<int> shared1(new int);
+  std::cout << "shared pointer count = " << shared1.use_count() << std::endl;
+
+  {
+      std::shared_ptr<int> shared2 = shared1;
+      std::cout << "shared pointer count = " << shared1.use_count() << std::endl;
+  }
+
+  std::cout << "shared pointer count = " << shared1.use_count() << std::endl;
+
+  return 0;
+}
+```
+
+The output will be:
+
+```bash
+shared pointer count = 1
+shared pointer count = 2
+shared pointer count = 1
 ```
