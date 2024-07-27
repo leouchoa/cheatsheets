@@ -1,6 +1,52 @@
 # Lambda Functions
 
-Just take care with the `mutable` keyword, as the following example shows:
+## Lambda
+
+A Lambda is a function object (a "functor"), so it has a type and can be
+stored and passed around. Its result object is called a "closure", which can
+be called using the operator `()`.
+
+A lambda formally consists of three parts: a capture list `[]` , a parameter
+list `()` and a main part `{}`.
+
+- The capture list `[]`: By default, variables outside of the enclosing `{}`
+around the main part of the Lambda can not be accessed. By adding a variable
+to the capture list however, it becomes available within the Lambda either as
+a copy or as a reference. The captured variables become a part of the Lambda.
+
+- The parameter list `()`: The way parameters are passed to a Lambda is
+basically identical to calling a regular function. If the Lambda takes no
+arguments, these parentheses can be omitted.
+
+By the way a Lambda does not exist at runtime. The runtime effect of a Lambda
+is the generation of an object (the closure). The difference between a Lambda
+and the corresponding closure is similar to the distinction between a class
+and an instance of the class. A class exists only in the source code while the
+objects created from it exist at runtime.
+
+## Example 1
+
+```cpp
+#include <iostream>
+
+int main() {
+  int id = 0;
+
+  auto f = [](const int id) { std::cout << "ID = " << id << std::endl; };
+
+  f(id);
+
+  return 0;
+}
+```
+
+## Example 2
+
+By default, variables in the capture block can not be modified within the
+Lambda. Using the keyword "mutable" allows to modify the parameters captured
+by copy, and to call their non-`const` member functions within the body of the
+Lambda. Just take care with the `mutable` keyword, as the following example
+shows:
 
 ```cpp
 #include <iostream>
