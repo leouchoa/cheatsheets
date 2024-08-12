@@ -23,6 +23,20 @@ console.log(...myPackage);
 
 ```
 
+## With Objects
+
+```js
+let user = {
+  name: "Idk",
+  age: 11
+}
+
+let adminUser = {
+  isAdmin: true,
+  ...user
+}
+```
+
 ## Better Example
 
 This is example is extracted from [here](https://slides.com/bgando/f2f-final-day-1#/7/14).
