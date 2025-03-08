@@ -11,6 +11,7 @@
 - Replacing a pod instead of having to delete and then apply: `k replace --force -f <filename>`
 - Apply label to node: `k label nodes node01 color=blue`
 - Attach to a pod current shell: `k exec -it app -- /bin/sh`
+- Create stuff from the web: `k apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
 
 Quickly create stuff:
 
