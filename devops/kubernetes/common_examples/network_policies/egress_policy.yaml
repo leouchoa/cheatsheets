@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-backend-traffic
+spec:
+  podSelector: {}
+  egress:
+    - to:
+      - podSelector:
+        matchLabels:
+          app: backend
+      ports:
+        - protocol: TCP
+          port: 8080
