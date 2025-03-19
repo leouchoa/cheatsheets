@@ -78,11 +78,18 @@ Roles are usually namespaced, while Cluster Roles are cluster-wide roles.
 
 ## Admission Controllers
 
-They're ued to implement enhanced security measures (like validate/reject requests)
-and/or provide extra actions (auto provision namespaces, rate limit, etc.)
+They're used to implement enhanced security measures (like validate/reject requests)
+and/or provide extra actions (auto provision `namespaces`, rate limit, etc.)
 before pods are created.
 
-- Get available admission controllers: `kube-apiserver -h | grep 'enable-admission-plugins'`
+- Get enabled admission controllers:
+  1. Go to `/etc/kubernetes/manifests/kube-apiserver.yaml`
+  2. Check the field: `- --enable-admission-plugins`
+
+- To disable an admission controller:
+  1. Go to `/etc/kubernetes/manifests/kube-apiserver.yaml`
+  2. Add the field: `- --disable-admission-plugins=<you-controller-here>`
+  3. Example:`- --disable-admission-plugins=DefaultStorageClass`
 
 - Since the kube-apiserver is running as pod you can run
   `ps -ef | grep kube-apiserver | grep admission-plugins`
