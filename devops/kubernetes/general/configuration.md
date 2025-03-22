@@ -45,6 +45,10 @@ spec:
 
 ## Secrets
 
+> [!NOTE]
+> When using secrets remember they need to be mounted as volumes in the
+> host system to only then be read as environment variables.
+
 Used to inject sensitive environment variables into pods. However:
 
 - Secrets are not encrypted, only encoded.
@@ -94,8 +98,8 @@ spec:
     ports:
       - containerPort: 8080
     envFrom:
-      - secretRef:
-        name: app-secret
+    - secretRef:
+      name: app-secret
 ```
 
 Note you can also mount the secret as a volume. In that case each attribute is
@@ -104,7 +108,8 @@ created as file. In our secret manifest file, it would be two files, named
 
 ## Security Context
 
-This is mostly related to container sandboxing and isolation. Things to pay attention:
+This is mostly related to container sandboxing and isolation.
+Things to pay attention:
 
 - User usually runs on root in containers: `kubectl exec ubuntu-sleeper -- whoami`
 

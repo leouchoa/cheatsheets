@@ -1,16 +1,26 @@
 # Common Commands and Situations
 
 - Run a basic nginx: `k run nginx --image=nginx`
+
 - Find the image used by the pod: `k describe pod <pod-name> | grep "Image"`
+
 - Get the pod definition file: `kubectl get pod <pod-name> -o yaml > pod-definition.yaml`
   - Another example: `k run nginx --image=nginx --dry-run=client -o yaml > nginx-pod.yaml`
+
 - To modify pod properties, use `k edit pod <pod-name>`
   - **NOTE**: running pods won't be updated! You have to delete them.
+  - Remember the `--record` flag in case you need.
+
 - Scaling `ReplicaSets`: `k scale replicaset <new-replica-set> --replicas 10000`
+
 - Find a pod throughout all namespaces: `k get pods --all-namespaces | grep 'blue'`
+
 - Replacing a pod instead of having to delete and then apply: `k replace --force -f <filename>`
+
 - Apply label to node: `k label nodes node01 color=blue`
+
 - Attach to a pod current shell: `k exec -it app -- /bin/sh`
+
 - Create stuff from the web: `k apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
 
 Quickly create stuff:
@@ -30,10 +40,33 @@ k run httpd --image httpd:alpine
 k expose pod httpd --port 80 --name httpd
 ```
 
-### Grepping Accross containers
+Quickly check your rollouts (try them after `kubectl create deployment nginx --image=nginx`):
+
+- `k rollout status deployment/<deployment-name>`
+- `k rollout history deployment/<deployment-name>`
+- `k rollout undo deployment/<deployment-name>`
+  - also remember you can use the `----to-revision=N` flag.
+
+The `--record` flag is available in the commands:
+
+- `create`
+- `edit`
+- `delete`
+- `rollout`
+- `set`
+
+### Grepping Across containers
 
 ```bash
 k describe pod blue-7bd99994c- | grep 'Node'
+```
+
+### Quickly Create Ingress
+
+```bash
+kubectl create ingress ingress-pay -n payments-space --rule="<ADD-THIS>"
+# NOTE: more options at:
+# k create ingress -h
 ```
 
 ## Basics

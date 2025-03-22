@@ -1,0 +1,8 @@
+kind: Global
+apiVersion: traffic.controller/v1
+metadata:
+  name: datacenter
+  namespace: default
+spec:
+  dataField: 2
+  access: true

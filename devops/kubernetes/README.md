@@ -1,5 +1,11 @@
 # Kubernetes Cheatsheet
 
+- (!) print surrounding lines in grep:
+  - `k describe po ubuntu-sleeper | grep -B 3 Command` (before)
+  - `k describe po ubuntu-sleeper | grep -A 3 Command` (after)
+  - `k describe po ubuntu-sleeper | grep -B 3 -A 3 Command` (before and after)
+
+- get inside one of many containers inside a pod: `kubectl exec -it <pod-name> -c <container-name> -- /bin/bash`
 - creating pods: `kubectl create -f definition_file.yaml`
   - take notice of the `--record` parameter, it's very important to
     catalog changes!
