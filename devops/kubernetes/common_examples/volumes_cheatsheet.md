@@ -19,6 +19,14 @@ Now for `hostPath`:
         type: Directory
 ```
 
+and for `emptyDir: {}`
+
+```yaml
+  volumes:
+    - name: temp-storage
+      emptyDir: {}
+```
+
 while for PVCs:
 
 ```yaml

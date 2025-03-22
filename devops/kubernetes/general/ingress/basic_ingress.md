@@ -12,7 +12,7 @@ What will be created:
 
 First create a new namespace `k create ns ingress-nginx`.
 
-Then create a configMap for the nginx controller with
+Then create a `configMap` for the `nginx` controller with
 `k create configmap -n ingress-nginx ingress-nginx-controller`.
 
 Now both service accounts:
