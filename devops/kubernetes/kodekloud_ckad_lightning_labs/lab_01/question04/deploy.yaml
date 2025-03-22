@@ -1,0 +1,29 @@
+# Then 
+# 1. to upgrade to 1.17 edit the Deployment
+# 2. to downgrade to 1.16 undo the rollout
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx-deploy
+  name: nginx-deploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  strategy:
+   type: RollingUpdate
+   rollingUpdate:
+     maxUnavailable: 2
+     maxSurge: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx-deploy
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
