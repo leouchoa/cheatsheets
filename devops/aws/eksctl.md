@@ -32,7 +32,7 @@ k8s service accounts in the cluster.
 ```bash
 eksctl utils associate-iam-oidc-provider \
     --region us-east-1 \
-    --cluster eksdemo1 \
+    --cluster eksdemo \
     --approve
 ```
 
@@ -53,7 +53,7 @@ Finally create the node-group with addons:
 ```bash
 eksctl create nodegroup --cluster=eksdemo \
                         --region=us-east-1 \
-                        --name=eksdemo1-ng-public1 \
+                        --name=eksdemo-ng-public1 \
                         --node-type=t3.medium \
                         --nodes=2 \
                         --nodes-min=2 \
@@ -80,6 +80,11 @@ In case you wanna get into a worker node:
 ssh -i kube-demo.pem ec2-user@<Public-Worker-Node-IP>
 ```
 
+> [!WARNING]
+> If you want to access your applications, don't forget to allow traffic on the remote
+> access security group!
+> EC2 -> Security Group -> Search the one with "remoteAccess" -> Add Inbound Rule
+
 ### Node Groups - Private and Self Managed
 
 However if you want your worker nodes in a private subnet (
@@ -88,7 +93,7 @@ mostly just adding `--node-private-networking`):
 ```bash
 eksctl create nodegroup --cluster=eksdemo \
                         --region=us-east-1 \
-                        --name=eksdemo1-ng-private1 \
+                        --name=eksdemo-ng-private1 \
                         --node-type=t3.medium \
                         --nodes-min=2 \
                         --nodes-max=4 \
@@ -103,6 +108,8 @@ eksctl create nodegroup --cluster=eksdemo \
                         --alb-ingress-access \
                         --node-private-networking
 ```
+
+### Node Groups - Private and Serverless (Fargate Profiles)
 
 ## Credits
 
