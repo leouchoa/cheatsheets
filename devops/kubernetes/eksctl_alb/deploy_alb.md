@@ -30,6 +30,9 @@ curl -o iam_policy_latest.json https://raw.githubusercontent.com/kubernetes-sigs
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://iam_policy_latest.json
+# Use the following command if you already have created the policy:
+#
+# aws iam list-policies --query "Policies[?PolicyName=='AWSLoadBalancerControllerIAMPolicy'].Arn" --output text
 ```
 
 Using `eksctl` create a role for service account of the alb, but first
@@ -50,9 +53,10 @@ eksctl create iamserviceaccount \
   --override-existing-serviceaccounts \
   --approve
 
-# use the following command if you forgot the policy arn:
+# Use the following command if you forgot the policy arn:
+#
 # aws iam list-policies \
-# --query "Policies[?PolicyName=='AllowExternalDNSUpdates'].Arn" \
+# --query "Policies[?PolicyName=='AWSLoadBalancerControllerIAMPolicy'].Arn" \
 # --output text
 ```
 
@@ -103,7 +107,8 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 # then rerun the install command.
 ```
 
-Finally deploy an `IngressClass`.
+Finally deploy the default `IngressClass` so we don't have to annotate our
+ingress definitions every time.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -117,6 +122,11 @@ spec:
 ```
 
 Done.
+
+> [!NOTE]
+> If you check the `aws-load-balancer-controller,` it has no token or secret
+> in it and the secret is not even created. However this seems not to
+> interfere with the alb.
 
 #### Meaning Behind `IngressClass` Deployment
 
