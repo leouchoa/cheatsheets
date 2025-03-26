@@ -14,7 +14,7 @@ The new parts will be:
 - aws alb controller combo:
   - deployment: the controller
   - service: controller webhook clusterIP
-  - secret: aws load balancer tls
+  - secret: aws load balancer tls (not being deployed anymore!)
 - IAM policy for the alb controller service account
 - alb controller service account
 - alb ingressclass

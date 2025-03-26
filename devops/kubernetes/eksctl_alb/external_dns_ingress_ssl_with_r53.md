@@ -28,7 +28,7 @@ have to configure:
   - external DNS cluster role
   - external DNS cluster role binding
 
-Now create the [appropriate IAM policy](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md#iam-policy).
+First create the [appropriate IAM policy](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md#iam-policy).
 
 ```json
 {
@@ -92,4 +92,4 @@ Now the only thing that you need to do is to add the annotation in the alb:
 external-dns.alpha.kubernetes.io/hostname: yoursubdomain.samplemed-data-science.com
 ```
 
-## Certificate Discovery
+For more examples, please check <this> and <that>.
