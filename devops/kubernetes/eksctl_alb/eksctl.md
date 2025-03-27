@@ -111,6 +111,42 @@ eksctl create nodegroup --cluster=eksdemo \
 
 ### Node Groups - Private and Serverless (Fargate Profiles)
 
+Important points:
+
+- Can only be deployed in private subnets.
+- Each pod runs in an isolated environment:
+  - The unit of work is the pod itself, not an EC2.
+  - Each host can only comport one pod.
+- Good for exposing billing to customers.
+  - The unit of charge is the pod itself, not an EC2.
+- Upon deletion of the Fargate nodegroup, your fargate resources
+(pods, deploys, load balacers) will be automatically rescheduled into your
+managed nodes. Also note that namespaced resources are preserved.
+
+Also about ports:
+
+- The pods will have random names and be private, which
+
+```bash
+eksctl create fargateprofile --cluster eksdemo \
+                             --name fp-demo \
+                             --namespace fp-dev
+```
+
+> [!IMPORTANT]
+> This is a serverless service, set your resources well because things
+> can go up very fast!
+
+```yaml
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "1000m"
+```
+
 ## Credits
 
 Those commands were all given in the following courses and I highly
