@@ -2,6 +2,8 @@
 
 # Deploy for
 # - Region: `us-east-1`
+# - To run the alb with route53, you'll need a domain from route53.
+#   - Don't forget the certificate (aws Cert. Manager) to enable tls encryption.
 
 # Files needed:
 # - An ssh-public-key key-pair for EC2 machines, named: `kube-demo`.
@@ -10,10 +12,9 @@
 
 # TODO: parse cli arguments:
 # - ssh-public-key filepath
-# - maybe aws region (attention to image.repository)
+# - maybe accept aws region (attention to image.repository)
 
 # -------------- Create cluster --------------
-# TODO: check [X]
 eksctl create cluster --name=eksdemo \
                       --region=us-east-1 \
                       --zones=us-east-1a,us-east-1b \
@@ -43,7 +44,7 @@ eksctl create nodegroup --cluster=eksdemo \
 
 # -------------- Deploy ALB --------------
 
-# TODO: check [X]
+# TODO: check if `iam_policy_latest.json` exists. Otherwise create anew [ ]
 curl -o iam_policy_latest.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
@@ -92,7 +93,6 @@ kubectl apply -f ./ingress_class.yaml
 
 # -------------- External DNS with Route53 --------------
 
-# TODO: check [ ]
 aws iam create-policy \
   --policy-name "AllowExternalDNSUpdates" \
   --policy-document file://allow_external_dns_updates.json
