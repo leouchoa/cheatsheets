@@ -2,6 +2,9 @@
 
 ## Quick Tips
 
+- Quickly rename resource: `terraform state mv resource_name.default resource_name.new`
+  - Example: `terraform state mv aws_instance.default aws_instance.new`
+
 - `terraform init`: **first command to run** to init the current
 dir with terraform config files.
 - `terraform plan`: creates a preview of the execution plan.
