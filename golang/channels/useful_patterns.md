@@ -1,5 +1,53 @@
 # Common/Useful Patterns
 
+## Goroutines Kinda Like a Closure
+
+You can have a goroutine kinda like a closure:
+
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func writeEvery(msg string, seconds time.Duration) <-chan string {
+    messages := make(chan string)
+    go func() {
+        for {
+            time.Sleep(seconds)
+            messages <- msg
+        }
+    }()
+    return messages
+}
+
+func main() {
+    messagesFromA := writeEvery("Tick", 1 * time.Second)
+    messagesFromB := writeEvery("Tock", 3 * time.Second)
+    for {
+        select {
+        case msg1 := <-messagesFromA:
+            fmt.Println(msg1)
+        case msg2 := <-messagesFromB:
+            fmt.Println(msg2)
+        }
+    }
+}
+```
+
+The `writeEvery` function returns the channel immediately, but the closure
+continues in the background.
+
+Also note that the variables inside the closure are not copied into the goroutine,
+they’re only referenced. Since these variables are not modified in the loop,
+it's safe. However if they were mutable and shared across goroutines, you need
+to watch out for race conditions.
+
+This pattern is something like "Will do something else meanwhile. Here's
+my phone number (the channel) so that you can call me to see if it's ready."
+
 ## 1. Fan-Out / Fan-In
 
 - **Fan-Out**: Launch multiple goroutines to process jobs in parallel.
