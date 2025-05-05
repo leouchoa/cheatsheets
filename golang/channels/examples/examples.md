@@ -133,3 +133,40 @@ func main() {
  fmt.Println("Ordered results:", results)
 }
 ```
+
+## Message Tagging
+
+```go
+package main
+
+import (
+ "fmt"
+)
+
+type Message struct {
+ Data string
+ Resp chan string
+}
+
+func main() {
+ ch := make(chan Message)
+
+ go func() {
+  fmt.Println("Waiting msgs from main...")
+  msg := <-ch
+  updated := msg.Data + " (updated)"
+  fmt.Println("Sending updated msg to main...")
+  msg.Resp <- updated
+ }()
+
+ respChan := make(chan string)
+
+ fmt.Println("Sending msg from main!")
+ ch <- Message{Data: "from main", Resp: respChan}
+
+ fmt.Println("Waiting response from worker")
+ response := <-respChan
+ fmt.Println("Received:", response)
+}
+
+```

@@ -2,6 +2,11 @@
 
 ## To Keep in Mind
 
+Channels are by default memory addresses (reference types), so when you pass them
+to a function/goroutine you're not copying the channel, just the reference.
+That also means that the channel itself is the same across all goroutines that
+share it.
+
 ## 1. Do not communicate by sharing memory; share memory by communicating
 
 - Instead of using locks and mutexes to protect shared memory, use channels to
